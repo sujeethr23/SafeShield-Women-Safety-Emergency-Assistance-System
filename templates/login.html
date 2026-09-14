@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SafeShield - User Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f3f6fb;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            width: 500px;
+            max-width: 92%;
+            margin: 30px auto;
+            padding: 42px 46px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+            text-align: center;
+        }
+
+        /* =========================
+           LOGO / BRAND
+        ========================== */
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .logo img {
+            width: 68px;
+            height: 68px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .brand-text {
+            text-align: left;
+        }
+
+        .brand-text h1 {
+            margin: 0;
+            font-size: 40px;
+            line-height: 1.1;
+            color: #111827;
+        }
+
+        .brand-text p {
+            margin: 7px 0 0;
+            font-size: 19px;
+	    line-height: 1.3;
+            color: #64748b;
+            font-weight: 600;
+	    white-space: nowrap;
+	    letter-spacing: 0.3px;
+        }
+
+        /* =========================
+           LOGIN TITLE
+        ========================== */
+
+        h2 {
+            margin: 0 0 30px;
+            font-size: 28px;
+            color: #1f2937;
+        }
+
+        /* =========================
+           FORM
+        ========================== */
+
+        form {
+            width: 100%;
+            margin: 0;
+        }
+
+        .form-content {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            width: 100%;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group input {
+            display: block;
+            width: 100%;
+            height: 56px;
+            padding: 0 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 9px;
+            background: #ffffff;
+            color: #111827;
+            font-size: 17px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input::placeholder {
+            color: #64748b;
+        }
+
+        .form-group input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        /* =========================
+           PASSWORD
+        ========================== */
+
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-wrapper input {
+            padding-right: 55px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
+
+        .toggle-password:hover {
+            background: #f1f5f9;
+        }
+
+        /* =========================
+           LOGIN BUTTON
+        ========================== */
+
+        .login-btn {
+            display: block;
+            width: 100%;
+            height: 56px;
+            margin-top: 6px;
+            border: none;
+            border-radius: 9px;
+            background: #2563eb;
+            color: white;
+            font-size: 19px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .login-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .login-btn:active {
+            transform: scale(0.99);
+        }
+
+        /* =========================
+           SIGN UP
+        ========================== */
+
+        .signup-text {
+            margin-top: 25px;
+            font-size: 16px;
+            color: #4b5563;
+        }
+
+        .signup-text a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            .login-container {
+                width: 92%;
+                max-width: 500px;
+                padding: 35px 25px;
+            }
+
+            .logo {
+                gap: 10px;
+            }
+
+            .logo img {
+                width: 58px;
+                height: 58px;
+            }
+
+            .brand-text h1 {
+                font-size: 34px;
+            }
+
+            .brand-text p {
+                font-size: 12px;
+            }
+
+            h2 {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+
+            .form-content {
+                max-width: 100%;
+            }
+
+            .form-group input,
+            .login-btn {
+                height: 54px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- SafeShield Branding -->
+        <div class="logo">
+
+            <img
+                src="{{ url_for('static', filename='shield.png') }}"
+                alt="SafeShield Logo"
+            >
+
+            <div class="brand-text">
+
+                <h1>SafeShield</h1>
+
+                <p>Your Safety, Our Priority</p>
+
+            </div>
+
+        </div>
+
+        <!-- Login Heading -->
+        <h2>User Login</h2>
+
+        <!-- Login Form -->
+        <form method="POST">
+
+            <div class="form-content">
+
+                <!-- Email -->
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            id="togglePassword"
+                            onclick="togglePassword()"
+                            aria-label="Show or hide password"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Login Button -->
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+                    Login
+                </button>
+
+            </div>
+
+        </form>
+
+        <!-- Create Account -->
+        <div class="signup-text">
+
+            Don't have an account?
+
+            <a href="/register">
+                Create Account
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function togglePassword() {
+
+            const passwordInput =
+                document.getElementById("password");
+
+            const toggleButton =
+                document.getElementById("togglePassword");
+
+            if (passwordInput.type === "password") {
+
+                passwordInput.type = "text";
+                toggleButton.textContent = "🙈";
+
+            } else {
+
+                passwordInput.type = "password";
+                toggleButton.textContent = "👁";
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>

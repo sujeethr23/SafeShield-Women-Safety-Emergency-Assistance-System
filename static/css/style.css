@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    text-align: center;
+    margin: 0;
+    padding: 50px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.status {
+    font-size: 20px;
+}
+
+#sosButton {
+    background: #d32f2f;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 22px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#sosButton:hover {
+    background: #b71c1c;
+}
+
+#message {
+    margin-top: 25px;
+    font-size: 18px;
+}

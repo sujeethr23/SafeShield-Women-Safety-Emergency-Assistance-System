@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SafeShield - Emergency Contacts</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🛡️ SafeShield</h1>
+
+    <h2>📞 Emergency Contacts</h2>
+
+    <p>
+        Add a trusted person who can be contacted during an emergency.
+    </p>
+
+    {% if error %}
+
+    <p style="color:red;">
+        {{ error }}
+    </p>
+
+    {% endif %}
+
+    <hr>
+
+    <h3>Add Contact</h3>
+
+    <form method="POST">
+
+        <p>
+            <input
+                type="text"
+                name="name"
+                placeholder="Contact Name"
+                required>
+        </p>
+
+        <p>
+            <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                required>
+        </p>
+
+        <p>
+            <input
+                type="text"
+                name="relationship"
+                placeholder="Relationship (Parent, Guardian, Friend...)"
+                required>
+        </p>
+
+        <button type="submit">
+            ➕ Save Emergency Contact
+        </button>
+
+    </form>
+
+    <hr>
+
+    <h3>Saved Contacts</h3>
+
+    {% if contacts %}
+
+        {% for contact in contacts %}
+
+        <div>
+
+            <p>
+                👤 <strong>{{ contact.name }}</strong>
+            </p>
+
+            <p>
+                📱 {{ contact.phone }}
+            </p>
+
+            <p>
+                🤝 {{ contact.relationship }}
+            </p>
+
+        </div>
+
+        <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>
+            No emergency contacts added yet.
+        </p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/dashboard">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+
+</html>

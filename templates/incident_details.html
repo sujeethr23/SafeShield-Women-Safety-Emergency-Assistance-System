@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        SafeShield - Incident #{{ incident.id }}
+    </title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+        }
+
+        header {
+            background: #17202a;
+            color: white;
+            padding: 20px;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 900px;
+            margin: 25px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .row {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .label {
+            font-weight: bold;
+            display: inline-block;
+            width: 190px;
+        }
+
+        .active {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .acknowledged {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .responding {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .resolved {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 11px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+            color: white;
+        }
+
+        .ack {
+            background: #f39c12;
+        }
+
+        .respond {
+            background: #3498db;
+        }
+
+        .resolve {
+            background: #27ae60;
+        }
+
+        .map {
+            display: inline-block;
+            padding: 11px 16px;
+            background: #17202a;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .back {
+            text-decoration: none;
+        }
+.history-item {
+    padding: 16px;
+    margin: 12px 0;
+    background: #f8f9fa;
+    border-left: 4px solid #17202a;
+    border-radius: 8px;
+}
+
+.history-status {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.history-time {
+    color: #666;
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+.history-author {
+    color: #444;
+    font-size: 14px;
+    margin-top: 7px;
+}
+.priority-critical {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+.priority-high {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+.priority-medium {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.priority-low {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.escalated {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+.normal {
+    color: #27ae60;
+    font-weight: bold;
+}
+    </style>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <h1>🛡️ SafeShield Monitoring Center</h1>
+
+    <p>🚨 Incident #{{ incident.id }}</p>
+
+</header>
+
+
+<div class="container">
+
+
+    <p>
+        <a class="back" href="{{ url_for('admin_dashboard') }}">
+            ← Back to Monitoring Center
+        </a>
+    </p>
+
+
+    <!-- INCIDENT INFORMATION -->
+
+    <div class="card">
+
+        <h2>🚨 Incident Information</h2>
+
+        <div class="row">
+        <div class="row">
+
+    	    <span class="label">
+        	🤖 AI Priority:
+    	    </span>
+
+    	    {% if incident.priority == "CRITICAL" %}
+
+            	<span class="priority-critical">
+            	    🔴 CRITICAL
+            	</span>
+
+    	    {% elif incident.priority == "HIGH" %}
+
+            	<span class="priority-high">
+            	    🟠 HIGH
+            	</span>
+
+    	    {% elif incident.priority == "MEDIUM" %}
+
+            	<span class="priority-medium">
+            	    🟡 MEDIUM
+            	</span>
+
+    	    {% elif incident.priority == "LOW" %}
+
+            	<span class="priority-low">
+            	    🟢 LOW
+                </span>
+
+    	    {% else %}
+
+        	{{ incident.priority }}
+
+    	    {% endif %}
+
+	</div>
+
+
+	<div class="row">
+
+    	    <span class="label">
+         	🚨 Escalation Level:
+   	    </span>
+
+   	    Level {{ incident.escalation_level }}
+
+	</div>
+
+
+	<div class="row">
+
+    	    <span class="label">
+        	Escalation Status:
+    	    </span>
+
+    	    {% if incident.escalation_status == "ESCALATED" %}
+
+        	<span class="escalated">
+            	    🚨 ESCALATED
+        	</span>
+
+    	    {% else %}
+
+        	<span class="normal">
+            	    🟢 NORMAL
+        	</span>
+
+    	    {% endif %}
+
+	</div>
+
+
+	<div class="row">
+
+    	    <span class="label">
+        	Escalation Reason:
+    	    </span>
+
+    	    {{ incident.escalation_reason or "No escalation required." }}
+
+	</div>
+        <div class="info-row">
+    	    <strong>📝 Response Notes:</strong>
+
+    	    <div style="margin-top:10px;">
+
+        	<textarea
+            	    id="responseNotes"
+            	    placeholder="Enter authority response notes..."
+            	    style="
+                	width:100%;
+                	min-height:120px;
+                	padding:12px;
+                	border:1px solid #ccc;
+                	border-radius:8px;
+                	resize:vertical;
+                	font-family:inherit;
+                	box-sizing:border-box;
+            	    "
+        	>{{ incident.response_notes or "" }}</textarea>
+
+        	<button
+            	    onclick="saveResponseNotes()"
+             	    style="   
+                	margin-top:10px;
+                	padding:10px 18px;
+                	border:none;
+                	border-radius:6px;
+                	cursor:pointer;
+                	font-weight:bold;
+            	    "
+        	>
+            	   💾 SAVE RESPONSE NOTES
+        	</button>
+
+        	<span
+            	    id="notesMessage"
+            	    style="
+                	margin-left:10px;
+                	font-weight:bold;
+            	    "
+        	></span>
+
+    	    </div>
+	</div>
+            <span class="label">
+                Incident ID:
+            </span>
+
+            #{{ incident.id }}
+
+        </div>
+
+
+        <div class="row">
+
+            <span class="label">
+                User:
+            </span>
+
+            {% if incident.user %}
+
+                👤 {{ incident.user.name }}
+
+            {% else %}
+
+                Unknown
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="row">
+
+            <span class="label">
+                Status:
+            </span>
+
+            {% if incident.status == "ACTIVE" %}
+
+                <span class="active">
+                    🔴 ACTIVE
+                </span>
+
+            {% elif incident.status == "ACKNOWLEDGED" %}
+
+                <span class="acknowledged">
+                    🟡 ACKNOWLEDGED
+                </span>
+
+            {% elif incident.status == "RESPONDING" %}
+
+                <span class="responding">
+                    🔵 RESPONDING
+                </span>
+
+            {% elif incident.status == "RESOLVED" %}
+
+                <span class="resolved">
+                    🟢 RESOLVED
+                </span>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="row">
+
+            <span class="label">
+                Created:
+            </span>
+
+            {{ incident.created_at }}
+
+        </div>
+
+    </div>
+
+    <!-- USER-SUBMITTED EMERGENCY DETAILS -->
+
+    <div class="card">
+
+        <h2>📝 User-Submitted Emergency Details</h2>
+
+        <div class="row">
+
+            <span class="label">
+                🚨 Emergency Category:
+            </span>
+
+            {{ incident.category or "Not provided" }}
+
+        </div>
+
+        <div class="row">
+
+            <span class="label">
+                📍 Location Type:
+            </span>
+
+            {{ incident.location_description or "Not provided" }}
+
+        </div>
+
+        <div class="row">
+
+            <span class="label">
+                ⚠️ Severity:
+            </span>
+
+            {% if incident.severity %}
+                {{ incident.severity }}/5
+            {% else %}
+                Not provided
+            {% endif %}
+
+        </div>
+
+        <div class="row">
+
+            <span class="label">
+                ⏱️ Urgency:
+            </span>
+
+            {% if incident.urgency %}
+                {{ incident.urgency }}/5
+            {% else %}
+                Not provided
+            {% endif %}
+
+        </div>
+
+        <div class="row">
+
+            <span class="label">
+                💬 User Message:
+            </span>
+
+            <div style="
+                display:inline-block;
+                vertical-align:top;
+                max-width:65%;
+                white-space:pre-wrap;
+                line-height:1.5;
+            ">
+                {{ incident.user_message or "No additional message provided." }}
+            </div>
+
+        </div>
+
+    </div>
+    <!-- USER CONTACT -->
+
+    <div class="card">
+
+        <h2>📞 Emergency Contact</h2>
+
+        {% if incident.contact %}
+
+            <div class="row">
+
+                <span class="label">
+                    Name:
+                </span>
+
+                {{ incident.contact.name }}
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="label">
+                    Phone:
+                </span>
+
+                {{ incident.contact.phone }}
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="label">
+                    Relationship:
+                </span>
+
+                {{ incident.contact.relationship }}
+
+            </div>
+
+        {% else %}
+
+            <p>
+                No emergency contact is connected to this incident.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- LOCATION -->
+
+    <div class="card">
+
+        <h2>📍 Emergency Location</h2>
+
+        <div class="row">
+
+            <span class="label">
+                Latitude:
+            </span>
+
+            {{ "%.6f"|format(incident.latitude) }}
+
+        </div>
+
+
+        <div class="row">
+
+            <span class="label">
+                Longitude:
+            </span>
+
+            {{ "%.6f"|format(incident.longitude) }}
+
+        </div>
+
+
+        <a
+            class="map"
+            target="_blank"
+            href="https://www.google.com/maps?q={{ incident.latitude }},{{ incident.longitude }}"
+        >
+
+            🗺️ Open Location
+
+        </a>
+
+    </div>
+    <!-- EMERGENCY NOTIFICATION -->
+
+    <div class="card">
+
+    <h2>📢 Emergency Contact Notification</h2>
+
+    {% if incident.notifications %}
+
+        {% for notification in incident.notifications %}
+
+        <div class="row">
+            <span class="label">Recipient:</span>
+            {{ notification.recipient_name or "Not provided" }}
+        </div>
+
+        <div class="row">
+            <span class="label">Phone:</span>
+            {{ notification.recipient_phone or "Not provided" }}
+        </div>
+
+        <div class="row">
+            <span class="label">Type:</span>
+            {{ notification.notification_type }}
+        </div>
+
+        <div class="row">
+            <span class="label">Status:</span>
+            {{ notification.status }}
+        </div>
+
+        <div class="row">
+            <span class="label">Created:</span>
+            {{ notification.created_at.strftime("%Y-%m-%d %H:%M:%S") }}
+        </div>
+
+        <div style="
+            margin-top:15px;
+            padding:15px;
+            background:#f5f5f5;
+            border-radius:8px;
+            white-space:pre-wrap;
+        ">
+            {{ notification.message }}
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No emergency notification recorded.</p>
+
+    {% endif %}
+
+</div>
+    <!-- STATUS HISTORY -->
+
+<div class="card">
+
+    <h2>📋 Incident Timeline</h2>
+
+    {% if incident.status_history %}
+
+        {% for history in incident.status_history|sort(attribute="changed_at") %}
+
+            <div class="history-item">
+
+                <div class="history-status">
+
+                    {% if history.old_status %}
+
+                        {% if history.old_status == "ACTIVE" %}
+                            🔴
+                        {% elif history.old_status == "ACKNOWLEDGED" %}
+                            🟡
+                        {% elif history.old_status == "RESPONDING" %}
+                            🔵
+                        {% elif history.old_status == "RESOLVED" %}
+                            🟢
+                        {% endif %}
+
+                        {{ history.old_status }}
+
+                        →
+                        
+                    {% endif %}
+
+
+                    {% if history.new_status == "ACTIVE" %}
+                        🔴
+                    {% elif history.new_status == "ACKNOWLEDGED" %}
+                        🟡
+                    {% elif history.new_status == "RESPONDING" %}
+                        🔵
+                    {% elif history.new_status == "RESOLVED" %}
+                        🟢
+                    {% endif %}
+
+                    {{ history.new_status }}
+
+                </div>
+
+
+                <div class="history-time">
+
+                    🕒
+                    {{ history.changed_at.strftime("%d %b %Y, %I:%M:%S %p") }}
+
+                </div>
+
+
+                <div class="history-author">
+
+    		    {% if history.authority %}
+
+        		👮 Action performed by:
+
+        		<strong>
+            		    {{ history.authority.name }}
+        		</strong>
+
+    		    {% else %}
+
+        		🤖 Action performed by:
+
+        		<strong>
+            	 	    System</strong>
+
+        		<br>
+
+        		ℹ️ Emergency incident created.
+
+    		    {% endif %}
+
+		</div>
+
+            </div>
+
+        {% endfor %}
+{% if incident.response_notes %}
+<div style="
+    margin-top:20px;
+    padding:18px;
+    border-left:5px solid #2196F3;
+    background:#f5f9ff;
+    border-radius:8px;
+">
+
+    <div style="
+        font-size:18px;
+        font-weight:bold;
+        margin-bottom:10px;
+    ">
+        📝 Authority Response Notes
+    </div>
+
+    <div style="
+        color:#333;
+        line-height:1.6;
+        white-space:pre-wrap;
+    ">
+        {{ incident.response_notes }}
+    </div>
+
+    <div style="
+        margin-top:10px;
+        color:#666;
+        font-size:13px;
+    ">
+        👮 Recorded by SafeShield Authority
+    </div>
+
+</div>
+{% endif %}
+       
+    {% else %}
+
+        <div class="history-item">
+
+            <div class="history-status">
+
+                {% if incident.status == "ACTIVE" %}
+                    🔴 ACTIVE
+                {% elif incident.status == "ACKNOWLEDGED" %}
+                    🟡 ACKNOWLEDGED
+                {% elif incident.status == "RESPONDING" %}
+                    🔵 RESPONDING
+                {% elif incident.status == "RESOLVED" %}
+                    🟢 RESOLVED
+                {% endif %}
+
+            </div>
+
+            <div class="history-time">
+
+                🕒 Incident created:
+                {{ incident.created_at.strftime("%d %b %Y, %I:%M:%S %p") }}
+
+            </div>
+
+            <div class="history-author">
+
+                ℹ️ No status changes recorded yet.
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+</div>
+    <!-- STATUS ACTIONS -->
+
+<div class="card">
+
+    <h2>🔄 Incident Status</h2>
+
+    {% if incident.status == "ACTIVE" %}
+
+        <p>
+            🚨 Emergency is currently active.
+        </p>
+
+        <button
+            class="ack"
+            onclick="updateStatus(
+                {{ incident.id }},
+                'ACKNOWLEDGED'
+            )">
+
+            ✅ ACKNOWLEDGE INCIDENT
+
+        </button>
+
+
+    {% elif incident.status == "ACKNOWLEDGED" %}
+
+        <p>
+            🟡 Incident has been acknowledged.
+        </p>
+
+        <button
+            class="respond"
+            onclick="updateStatus(
+                {{ incident.id }},
+                'RESPONDING'
+            )">
+
+            🚓 MARK AS RESPONDING
+
+        </button>
+
+
+    {% elif incident.status == "RESPONDING" %}
+
+        <p>
+            🔵 Response is in progress.
+        </p>
+
+        {% if incident.status == "RESPONDING" %}
+
+<div style="
+    margin-top:20px;
+    padding:18px;
+    background:#f8f9fa;
+    border-radius:8px;
+">
+
+    <h3 style="margin-top:0;">
+        ✅ Resolution Summary
+    </h3>
+
+    <textarea
+        id="resolutionSummary"
+        placeholder="Enter the final resolution or outcome..."
+        style="
+            width:100%;
+            min-height:120px;
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            resize:vertical;
+            font-family:inherit;
+            box-sizing:border-box;
+        "
+    >{{ incident.resolution_summary or "" }}</textarea>
+
+</div>
+
+<button
+    class="resolve"
+    onclick="resolveIncident()"
+>
+    ✅ MARK AS RESOLVED
+</button>
+
+{% endif %}
+
+    {% elif incident.status == "RESOLVED" %}
+
+        <p>
+            🟢 This incident has been resolved.
+        </p>
+
+        <p>
+            No further status actions are available.
+        </p>
+
+    {% endif %}
+
+</div>
+<script>
+function saveResponseNotes() {
+
+    const notesBox =
+        document.getElementById("responseNotes");
+
+    if (!notesBox) {
+        alert("❌ Response notes field not found.");
+        return;
+    }
+
+    const notes =
+        notesBox.value.trim();
+
+    if (!notes) {
+        alert("Please enter response notes.");
+        return;
+    }
+
+    fetch(
+        "/api/incident/{{ incident.id }}/response-notes",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": getCSRFToken()
+            },
+            body: JSON.stringify({
+                response_notes: notes
+            })
+        }
+    )
+    .then(response => response.json())
+    .then(data => {
+
+        console.log(
+            "Response notes response:",
+            data
+        );
+
+        if (data.success) {
+
+            alert("✅ Response notes saved successfully.");
+
+            window.location.reload();
+
+        } else {
+
+            alert(
+                "❌ " +
+                (data.message ||
+                "Failed to save response notes.")
+            );
+        }
+
+    })
+    .catch(error => {
+
+        console.error(
+            "Response notes error:",
+            error
+        );
+
+        alert(
+            "❌ Failed to save response notes.\n\n" +
+            error.message
+        );
+    });
+}
+</script>
+<script>
+function getCSRFToken() {
+    const meta = document.querySelector(
+        'meta[name="csrf-token"]'
+    );
+
+    return meta ? meta.getAttribute("content") : "";
+}
+
+function updateStatus(incidentId, newStatus) {
+
+    fetch("/api/incident/" + incidentId + "/status", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": getCSRFToken()
+        },
+        body: JSON.stringify({
+            status: newStatus
+        })
+    })
+
+    .then(response => response.json())
+    .then(data => {
+
+        console.log("Status update response:", data);
+
+        if (data.success) {
+
+            console.log(
+                "✅ Incident status updated to " + newStatus
+            );
+
+            window.location.reload();
+
+        } else {
+
+            alert(
+                "❌ " +
+                (data.message ||
+                "Failed to update incident status.")
+            );
+        }
+
+    })
+    .catch(error => {
+
+        console.error("Status update error:", error);
+
+        alert(
+            "❌ Failed to update incident status.\n\n" +
+            error.message
+        );
+    });
+}
+
+
+function resolveIncident() {
+
+    const summaryBox =
+        document.getElementById("resolutionSummary");
+
+    if (!summaryBox) {
+        alert("❌ Resolution summary field not found.");
+        return;
+    }
+
+    const summary =
+        summaryBox.value.trim();
+
+    if (!summary) {
+        alert(
+            "Please enter a resolution summary before resolving the incident."
+        );
+        return;
+    }
+
+    fetch(
+        "/api/incident/{{ incident.id }}/resolution-summary",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": getCSRFToken()
+            },
+            body: JSON.stringify({
+                resolution_summary: summary
+            })
+        }
+    )
+    .then(response => response.json())
+    .then(data => {
+
+        console.log(
+            "Resolution summary response:",
+            data
+        );
+
+        if (!data.success) {
+            alert(
+                "❌ " +
+                (data.message ||
+                "Failed to save resolution summary.")
+            );
+            return;
+        }
+
+        console.log(
+            "✅ Resolution summary saved successfully."
+        );
+
+        updateStatus(
+            {{ incident.id }},
+            "RESOLVED"
+        );
+
+    })
+    .catch(error => {
+
+        console.error(
+            "Resolution summary error:",
+            error
+        );
+
+        alert(
+            "❌ Failed to save resolution summary.\n\n" +
+            error.message
+        );
+    });
+}
+</script>
+<body>
+<html>

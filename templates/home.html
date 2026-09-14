@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>SafeShield - Emergency Assistance</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #172b4d;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: #dff6e5;
+            color: #16833b;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .sos-button {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: none;
+            background: #d62828;
+            color: white;
+            font-size: 38px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(214,40,40,0.35);
+            transition: 0.2s;
+        }
+
+        .sos-button:hover {
+            transform: scale(1.04);
+        }
+
+        .sos-button:disabled {
+            background: #888;
+            cursor: not-allowed;
+        }
+
+        .message {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .success {
+            background: #dff6e5;
+            color: #176b35;
+        }
+
+        .error {
+            background: #ffe1e1;
+            color: #9b1c1c;
+        }
+
+        .info {
+            margin-top: 25px;
+            text-align: left;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .links {
+            margin-top: 25px;
+        }
+
+        .links a {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 15px;
+            background: #172b4d;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        footer {
+            text-align: center;
+            margin: 30px;
+            color: #777;
+        }
+.emergency-form {
+    margin-top: 30px;
+    padding: 25px;
+    background: #f8fafc;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.emergency-form h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.emergency-form label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.emergency-form select,
+.emergency-form input[type="range"] {
+    width: 100%;
+}
+
+.emergency-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    background: white;
+}
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🛡️ SafeShield</h1>
+    <p>Women Safety & Emergency Assistance System</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="status">
+            🟢 SYSTEM ONLINE
+        </div>
+
+        <h2>Emergency Assistance</h2>
+
+        <p>
+            Press the SOS button to create an emergency incident
+            and share your current location with the SafeShield system.
+        </p>
+
+        <br>
+
+        <button
+            id="sosButton"
+            class="sos-button"
+            onclick="sendSOS()">
+            SOS
+        </button>
+ <div class="emergency-form">
+
+    <h3>🚨 Emergency Details</h3>
+
+    <label for="category">Emergency Category</label>
+
+    <select id="category">
+        <option value="Assault">Assault</option>
+        <option value="Harassment">Harassment</option>
+        <option value="Medical Emergency">Medical Emergency</option>
+        <option value="Accident">Accident</option>
+        <option value="Suspicious Activity">Suspicious Activity</option>
+        <option value="Unsafe Location">Unsafe Location</option>
+        <option value="Threat">Threat</option>
+        <option value="Other" selected>Other</option>
+    </select>
+
+    <label for="location">Location Type</label>
+
+    <select id="location">
+        <option value="Road">Road</option>
+        <option value="Hostel">Hostel</option>
+        <option value="College">College</option>
+        <option value="Bus Stop">Bus Stop</option>
+        <option value="Railway Station">Railway Station</option>
+        <option value="Market">Market</option>
+        <option value="Park">Park</option>
+        <option value="Residential Area">Residential Area</option>
+    </select>
+
+    <label for="severity">
+        Severity: <span id="severityValue">3</span>/5
+    </label>
+
+    <input
+        type="range"
+        id="severity"
+        min="1"
+        max="5"
+        value="3"
+        oninput="document.getElementById('severityValue').innerText=this.value"
+    >
+
+    <label for="urgency">
+        Urgency: <span id="urgencyValue">3</span>/5
+    </label>
+
+    <input
+        type="range"
+        id="urgency"
+        min="1"
+        max="5"
+        value="3"
+        oninput="document.getElementById('urgencyValue').innerText=this.value"
+    >
+
+    <label for="userMessage">
+        Emergency Details / Message
+    </label>
+
+    <textarea
+        id="userMessage"
+        rows="4"
+        maxlength="500"
+        placeholder="Briefly describe what is happening..."
+        style="width:100%; padding:10px; border:1px solid #ccc; border-radius:7px; resize:vertical;"
+    ></textarea>
+
+</div>
+</div>    
+        <div id="message" class="message"></div>
+
+        <div class="info">
+            <h3>🤖 AI Priority System</h3>
+
+            <p>
+                SafeShield uses an AI-based priority prediction system
+                to classify emergency incidents.
+            </p>
+
+            <p>
+                The current prototype considers:
+            </p>
+
+            <ul>
+                <li>Emergency category</li>
+                <li>Location type</li>
+                <li>Severity</li>
+                <li>Urgency</li>
+            </ul>
+        </div>
+
+        <div class="links">
+
+            <a href="/emergency-contacts">
+                Emergency Contacts
+            </a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    SafeShield — Emergency Assistance Prototype
+</footer>
+
+<script>
+
+function showMessage(text, type) {
+    const message = document.getElementById("message");
+
+    message.innerText = text;
+    message.className = "message " + type;
+    message.style.display = "block";
+}
+
+
+async function sendSOS() {
+
+    const button = document.getElementById("sosButton");
+    const message = document.getElementById("message");
+
+    button.disabled = true;
+    button.innerText = "LOCATING...";
+    message.style.display = "none";
+
+    if (!navigator.geolocation) {
+
+        showMessage(
+            "Location services are not supported by this browser.",
+            "error"
+        );
+
+        button.disabled = false;
+        button.innerText = "SOS";
+
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        async function(position) {
+
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            button.innerText = "SENDING...";
+
+            try {
+
+                const csrfToken = document.querySelector(
+                    'meta[name="csrf-token"]'
+                );
+
+                if (!csrfToken) {
+                    throw new Error("CSRF token not found on page.");
+                }
+
+                const response = await
+                fetch("/api/sos", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": document.querySelector(
+            		    'meta[name="csrf-token"]'
+        		).getAttribute("content")
+                    },
+
+                    body: JSON.stringify({
+
+                        latitude: latitude,
+                        longitude: longitude,
+
+                        category:
+                            document.getElementById("category").value,
+
+                        location:
+                            document.getElementById("location").value,
+
+                        severity:
+                            Number(
+                                document.getElementById("severity").value
+                            ),
+
+                        urgency:
+                            Number(
+                                document.getElementById("urgency").value
+                            ),
+			message:
+    			     document.getElementById("userMessage").value.trim()
+                    })
+                });
+
+                const responseText = await response.text();
+
+                console.log(
+                    "SOS HTTP status:",
+                    response.status
+                );
+
+                console.log(
+                    "SOS server response:",
+                    responseText
+                );
+
+                let result;
+
+                try {
+
+                    result = JSON.parse(responseText);
+
+                } catch (error) {
+
+                    throw new Error(
+                        "Server returned invalid response: " +
+                        responseText
+                    );
+                }
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        result.message ||
+                        "SOS request failed. HTTP " +
+                        response.status
+                    );
+                }
+
+                showMessage(
+                    result.message ||
+                    "SOS emergency incident created successfully.",
+                    "success"
+                );
+
+                button.innerText = "SOS";
+
+            } catch (error) {
+
+                console.error(
+                    "SOS error:",
+                    error
+                );
+
+                showMessage(
+                    "SOS failed: " + error.message,
+                    "error"
+                );
+
+                button.innerText = "SOS";
+
+            } finally {
+
+                button.disabled = false;
+            }
+        },
+
+        function(error) {
+
+            console.error(
+                "Location error:",
+                error
+            );
+
+            let messageText =
+                "Unable to get your location.";
+
+            if (error.code === 1) {
+                messageText =
+                    "Location permission was denied. Please allow location access.";
+            }
+
+            if (error.code === 2) {
+                messageText =
+                    "Your location could not be determined.";
+            }
+
+            if (error.code === 3) {
+                messageText =
+                    "Location request timed out.";
+            }
+
+            showMessage(
+                messageText,
+                "error"
+            );
+
+            button.disabled = false;
+            button.innerText = "SOS";
+        },
+
+        {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+        }
+    );
+}
+
+</script>
+</body>
+</html>

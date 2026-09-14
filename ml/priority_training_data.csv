@@ -1,0 +1,1001 @@
+Category,Location,Severity,Urgency,Priority
+Assault,Hostel,3,5,MEDIUM
+Suspicious Activity,Bus Stop,3,4,MEDIUM
+Harassment,Park,5,2,MEDIUM
+Threat,Park,2,3,MEDIUM
+Harassment,Park,5,5,CRITICAL
+Threat,Road,5,1,MEDIUM
+Medical Emergency,Park,3,4,MEDIUM
+Assault,Park,4,3,MEDIUM
+Accident,Hostel,5,4,HIGH
+Suspicious Activity,Bus Stop,2,2,LOW
+Medical Emergency,Bus Stop,5,4,HIGH
+Medical Emergency,Bus Stop,1,1,LOW
+Suspicious Activity,Road,4,5,HIGH
+Other,Road,1,5,MEDIUM
+Threat,Market,4,1,MEDIUM
+Suspicious Activity,Bus Stop,5,3,MEDIUM
+Other,College,5,1,MEDIUM
+Harassment,Market,4,4,HIGH
+Threat,Bus Stop,3,3,MEDIUM
+Suspicious Activity,Hostel,3,2,MEDIUM
+Suspicious Activity,College,5,4,HIGH
+Threat,College,4,3,MEDIUM
+Threat,Hostel,5,5,CRITICAL
+Other,Railway Station,2,4,MEDIUM
+Medical Emergency,Road,3,2,MEDIUM
+Unsafe Location,Road,1,1,LOW
+Suspicious Activity,Railway Station,4,3,MEDIUM
+Harassment,Railway Station,3,1,MEDIUM
+Accident,Hostel,1,4,MEDIUM
+Medical Emergency,Bus Stop,4,1,MEDIUM
+Harassment,Road,2,5,MEDIUM
+Unsafe Location,Road,1,2,LOW
+Medical Emergency,Market,1,4,MEDIUM
+Accident,Market,3,1,MEDIUM
+Other,Bus Stop,3,4,MEDIUM
+Threat,Road,4,2,MEDIUM
+Accident,Road,3,4,MEDIUM
+Harassment,Market,1,4,MEDIUM
+Other,Road,2,5,MEDIUM
+Other,Road,5,4,HIGH
+Suspicious Activity,College,5,1,MEDIUM
+Harassment,Hostel,2,5,MEDIUM
+Accident,Market,2,3,MEDIUM
+Other,Residential Area,2,3,MEDIUM
+Other,Park,4,1,MEDIUM
+Threat,Road,4,1,MEDIUM
+Threat,Railway Station,1,3,MEDIUM
+Other,Hostel,3,4,MEDIUM
+Suspicious Activity,Hostel,4,1,MEDIUM
+Unsafe Location,Park,4,3,MEDIUM
+Medical Emergency,Railway Station,1,5,MEDIUM
+Other,Bus Stop,2,4,MEDIUM
+Medical Emergency,College,5,4,HIGH
+Unsafe Location,Hostel,3,5,MEDIUM
+Assault,Park,3,5,MEDIUM
+Harassment,Bus Stop,2,4,MEDIUM
+Harassment,Residential Area,3,2,MEDIUM
+Suspicious Activity,Residential Area,1,5,MEDIUM
+Unsafe Location,Bus Stop,5,4,HIGH
+Accident,Hostel,5,4,HIGH
+Unsafe Location,Bus Stop,1,1,LOW
+Harassment,Park,1,3,MEDIUM
+Medical Emergency,Park,2,4,MEDIUM
+Other,Railway Station,5,2,MEDIUM
+Accident,Hostel,4,2,MEDIUM
+Assault,Market,3,2,MEDIUM
+Harassment,College,2,3,MEDIUM
+Accident,Market,2,1,LOW
+Other,Park,2,3,MEDIUM
+Harassment,Bus Stop,1,4,MEDIUM
+Unsafe Location,Residential Area,2,1,LOW
+Accident,Residential Area,5,1,MEDIUM
+Unsafe Location,Hostel,2,4,MEDIUM
+Accident,Hostel,2,3,MEDIUM
+Unsafe Location,Road,1,4,MEDIUM
+Unsafe Location,Hostel,2,2,LOW
+Accident,Bus Stop,2,4,MEDIUM
+Suspicious Activity,Railway Station,3,4,MEDIUM
+Unsafe Location,Railway Station,3,4,MEDIUM
+Accident,College,1,5,MEDIUM
+Unsafe Location,College,5,5,CRITICAL
+Other,Hostel,4,5,HIGH
+Harassment,College,2,5,MEDIUM
+Assault,Residential Area,2,5,MEDIUM
+Threat,Hostel,1,2,LOW
+Accident,Residential Area,3,4,MEDIUM
+Medical Emergency,Road,3,1,MEDIUM
+Medical Emergency,Residential Area,3,4,MEDIUM
+Accident,Market,4,2,MEDIUM
+Unsafe Location,Hostel,3,5,MEDIUM
+Unsafe Location,Bus Stop,1,5,MEDIUM
+Medical Emergency,College,3,4,MEDIUM
+Harassment,Hostel,5,5,CRITICAL
+Unsafe Location,College,1,3,MEDIUM
+Assault,Railway Station,1,2,LOW
+Other,Railway Station,4,1,MEDIUM
+Suspicious Activity,College,1,2,LOW
+Threat,Hostel,2,4,MEDIUM
+Unsafe Location,Residential Area,2,3,MEDIUM
+Assault,Railway Station,5,4,HIGH
+Medical Emergency,Residential Area,4,4,HIGH
+Other,Park,4,1,MEDIUM
+Accident,Market,2,5,MEDIUM
+Medical Emergency,Bus Stop,2,3,MEDIUM
+Threat,Road,4,1,MEDIUM
+Medical Emergency,Bus Stop,3,5,MEDIUM
+Threat,Road,5,5,CRITICAL
+Suspicious Activity,Park,2,3,MEDIUM
+Assault,Bus Stop,3,5,MEDIUM
+Other,Residential Area,1,2,LOW
+Suspicious Activity,Hostel,4,2,MEDIUM
+Unsafe Location,Bus Stop,3,4,MEDIUM
+Accident,Hostel,4,4,HIGH
+Suspicious Activity,Railway Station,2,4,MEDIUM
+Harassment,Road,2,3,MEDIUM
+Harassment,Railway Station,4,4,HIGH
+Medical Emergency,Residential Area,5,2,MEDIUM
+Other,College,1,3,MEDIUM
+Suspicious Activity,College,4,4,HIGH
+Accident,Park,3,4,MEDIUM
+Harassment,Hostel,5,5,CRITICAL
+Medical Emergency,Hostel,4,1,MEDIUM
+Suspicious Activity,Park,1,3,MEDIUM
+Other,Road,5,1,MEDIUM
+Medical Emergency,Park,3,1,MEDIUM
+Unsafe Location,College,3,5,MEDIUM
+Assault,Railway Station,4,2,MEDIUM
+Accident,Bus Stop,5,2,MEDIUM
+Other,Residential Area,4,3,MEDIUM
+Harassment,Park,4,4,HIGH
+Accident,Road,3,1,MEDIUM
+Accident,Road,3,2,MEDIUM
+Assault,Railway Station,3,5,MEDIUM
+Suspicious Activity,College,5,1,MEDIUM
+Other,Market,1,5,MEDIUM
+Assault,Road,1,4,MEDIUM
+Suspicious Activity,Bus Stop,1,3,MEDIUM
+Other,Market,3,4,MEDIUM
+Suspicious Activity,Road,1,5,MEDIUM
+Suspicious Activity,Market,2,4,MEDIUM
+Medical Emergency,Park,1,5,MEDIUM
+Other,Park,5,5,CRITICAL
+Assault,Park,4,2,MEDIUM
+Threat,College,5,3,MEDIUM
+Assault,Hostel,2,5,MEDIUM
+Threat,Residential Area,3,1,MEDIUM
+Harassment,Park,2,3,MEDIUM
+Accident,Park,4,2,MEDIUM
+Assault,College,4,5,HIGH
+Assault,Hostel,1,4,MEDIUM
+Suspicious Activity,Railway Station,2,4,MEDIUM
+Accident,Bus Stop,3,5,MEDIUM
+Accident,Residential Area,4,3,MEDIUM
+Suspicious Activity,Park,1,4,MEDIUM
+Suspicious Activity,Hostel,5,4,HIGH
+Suspicious Activity,Bus Stop,1,1,LOW
+Threat,Residential Area,2,3,MEDIUM
+Assault,College,3,5,MEDIUM
+Suspicious Activity,Bus Stop,1,1,LOW
+Medical Emergency,Residential Area,1,2,LOW
+Unsafe Location,Market,3,3,MEDIUM
+Suspicious Activity,Road,1,2,LOW
+Medical Emergency,Park,1,1,LOW
+Suspicious Activity,Market,2,4,MEDIUM
+Threat,Park,3,5,MEDIUM
+Other,Residential Area,3,2,MEDIUM
+Threat,Residential Area,4,2,MEDIUM
+Medical Emergency,Market,1,1,LOW
+Accident,Railway Station,3,4,MEDIUM
+Assault,Road,1,3,MEDIUM
+Harassment,Park,4,5,HIGH
+Unsafe Location,Hostel,1,5,MEDIUM
+Suspicious Activity,Residential Area,4,4,HIGH
+Unsafe Location,Hostel,1,5,MEDIUM
+Other,Park,3,2,MEDIUM
+Assault,Hostel,5,4,HIGH
+Unsafe Location,Park,2,3,MEDIUM
+Threat,College,3,4,MEDIUM
+Unsafe Location,Park,3,1,MEDIUM
+Threat,Park,1,3,MEDIUM
+Harassment,College,4,5,HIGH
+Other,Residential Area,3,5,MEDIUM
+Harassment,Market,3,3,MEDIUM
+Medical Emergency,Bus Stop,3,4,MEDIUM
+Accident,College,1,1,LOW
+Accident,Residential Area,4,3,MEDIUM
+Unsafe Location,Residential Area,2,2,LOW
+Medical Emergency,Railway Station,2,5,MEDIUM
+Suspicious Activity,Road,1,2,LOW
+Harassment,College,4,1,MEDIUM
+Accident,Bus Stop,4,3,MEDIUM
+Suspicious Activity,Road,3,5,MEDIUM
+Assault,Market,2,3,MEDIUM
+Harassment,Market,1,1,LOW
+Threat,Residential Area,3,1,MEDIUM
+Suspicious Activity,Market,5,1,MEDIUM
+Threat,Residential Area,3,4,MEDIUM
+Assault,Road,4,5,HIGH
+Unsafe Location,Road,5,4,HIGH
+Assault,Road,4,1,MEDIUM
+Other,Bus Stop,1,1,LOW
+Assault,Market,1,2,LOW
+Unsafe Location,Road,3,4,MEDIUM
+Unsafe Location,Residential Area,2,1,LOW
+Medical Emergency,Railway Station,1,3,MEDIUM
+Assault,Bus Stop,4,1,MEDIUM
+Threat,Road,1,4,MEDIUM
+Assault,Market,1,5,MEDIUM
+Assault,Park,1,1,LOW
+Unsafe Location,College,4,2,MEDIUM
+Threat,Residential Area,3,3,MEDIUM
+Harassment,Market,2,3,MEDIUM
+Suspicious Activity,Bus Stop,2,3,MEDIUM
+Suspicious Activity,Hostel,5,2,MEDIUM
+Medical Emergency,Hostel,2,3,MEDIUM
+Harassment,Residential Area,2,5,MEDIUM
+Medical Emergency,Bus Stop,3,1,MEDIUM
+Other,Railway Station,1,5,MEDIUM
+Medical Emergency,Road,1,2,LOW
+Harassment,College,3,3,MEDIUM
+Harassment,Hostel,5,2,MEDIUM
+Assault,Residential Area,1,3,MEDIUM
+Accident,Market,5,1,MEDIUM
+Accident,Market,1,4,MEDIUM
+Medical Emergency,Hostel,5,2,MEDIUM
+Assault,Bus Stop,4,1,MEDIUM
+Threat,Park,2,3,MEDIUM
+Threat,Road,5,3,MEDIUM
+Threat,Hostel,3,3,MEDIUM
+Threat,Market,3,1,MEDIUM
+Harassment,Railway Station,3,5,MEDIUM
+Medical Emergency,Bus Stop,3,5,MEDIUM
+Medical Emergency,College,1,5,MEDIUM
+Threat,Park,3,2,MEDIUM
+Accident,Hostel,4,5,HIGH
+Unsafe Location,Hostel,2,2,LOW
+Harassment,College,2,1,LOW
+Other,Park,4,2,MEDIUM
+Unsafe Location,Residential Area,3,5,MEDIUM
+Medical Emergency,College,5,4,HIGH
+Unsafe Location,Road,3,4,MEDIUM
+Other,Hostel,1,3,MEDIUM
+Medical Emergency,Residential Area,4,1,MEDIUM
+Suspicious Activity,College,4,4,HIGH
+Threat,Hostel,5,5,CRITICAL
+Assault,Residential Area,3,3,MEDIUM
+Unsafe Location,Market,1,2,LOW
+Assault,Road,1,3,MEDIUM
+Other,Railway Station,2,3,MEDIUM
+Assault,Residential Area,2,3,MEDIUM
+Unsafe Location,Market,5,2,MEDIUM
+Suspicious Activity,Road,3,2,MEDIUM
+Harassment,Market,3,1,MEDIUM
+Accident,Road,5,1,MEDIUM
+Threat,College,5,3,MEDIUM
+Suspicious Activity,Road,1,3,MEDIUM
+Other,Road,4,3,MEDIUM
+Accident,Railway Station,5,3,MEDIUM
+Unsafe Location,College,5,1,MEDIUM
+Assault,Park,3,1,MEDIUM
+Assault,College,1,4,MEDIUM
+Other,College,2,2,LOW
+Other,Bus Stop,3,2,MEDIUM
+Accident,Road,1,4,MEDIUM
+Unsafe Location,Bus Stop,2,1,LOW
+Unsafe Location,Railway Station,4,4,HIGH
+Threat,Railway Station,4,4,HIGH
+Threat,Road,2,2,LOW
+Medical Emergency,College,3,3,MEDIUM
+Threat,Hostel,4,2,MEDIUM
+Accident,Park,5,4,HIGH
+Harassment,Bus Stop,3,1,MEDIUM
+Harassment,Bus Stop,2,4,MEDIUM
+Threat,Hostel,5,2,MEDIUM
+Accident,Residential Area,5,1,MEDIUM
+Other,College,5,4,HIGH
+Harassment,Park,1,3,MEDIUM
+Threat,Hostel,1,1,LOW
+Assault,Market,4,4,HIGH
+Other,Road,4,3,MEDIUM
+Harassment,Hostel,2,5,MEDIUM
+Threat,Hostel,5,4,HIGH
+Suspicious Activity,College,5,3,MEDIUM
+Threat,Park,3,4,MEDIUM
+Suspicious Activity,Road,4,5,HIGH
+Harassment,Residential Area,4,5,HIGH
+Assault,College,5,3,MEDIUM
+Other,Market,2,1,LOW
+Suspicious Activity,Hostel,3,5,MEDIUM
+Accident,Bus Stop,1,2,LOW
+Other,Road,1,1,LOW
+Other,Park,4,4,HIGH
+Threat,Hostel,1,5,MEDIUM
+Harassment,Bus Stop,4,4,HIGH
+Harassment,College,2,2,LOW
+Threat,Bus Stop,4,5,HIGH
+Other,College,2,3,MEDIUM
+Accident,Residential Area,5,5,CRITICAL
+Suspicious Activity,Road,4,1,MEDIUM
+Threat,Hostel,3,5,MEDIUM
+Suspicious Activity,Bus Stop,2,1,LOW
+Unsafe Location,College,2,3,MEDIUM
+Accident,Road,3,3,MEDIUM
+Accident,Railway Station,5,4,HIGH
+Assault,College,5,2,MEDIUM
+Harassment,College,2,1,LOW
+Suspicious Activity,Bus Stop,5,5,CRITICAL
+Accident,Bus Stop,1,2,LOW
+Accident,Railway Station,1,4,MEDIUM
+Assault,College,5,3,MEDIUM
+Assault,Railway Station,1,1,LOW
+Other,Park,5,4,HIGH
+Unsafe Location,Bus Stop,2,1,LOW
+Unsafe Location,Bus Stop,3,3,MEDIUM
+Harassment,College,4,3,MEDIUM
+Medical Emergency,Market,2,2,LOW
+Accident,Residential Area,3,5,MEDIUM
+Unsafe Location,Bus Stop,1,5,MEDIUM
+Medical Emergency,Hostel,4,3,MEDIUM
+Accident,Hostel,4,5,HIGH
+Unsafe Location,Bus Stop,4,3,MEDIUM
+Threat,Railway Station,4,2,MEDIUM
+Accident,Bus Stop,3,2,MEDIUM
+Other,Railway Station,3,4,MEDIUM
+Medical Emergency,Railway Station,1,4,MEDIUM
+Suspicious Activity,College,2,4,MEDIUM
+Medical Emergency,Road,2,2,LOW
+Other,College,2,4,MEDIUM
+Threat,Hostel,5,1,MEDIUM
+Medical Emergency,Hostel,3,2,MEDIUM
+Threat,Park,5,2,MEDIUM
+Suspicious Activity,Road,1,3,MEDIUM
+Assault,Residential Area,1,4,MEDIUM
+Unsafe Location,Road,4,5,HIGH
+Assault,Railway Station,4,5,HIGH
+Assault,Bus Stop,1,3,MEDIUM
+Threat,College,4,4,HIGH
+Assault,Park,1,2,LOW
+Threat,Market,2,1,LOW
+Threat,Market,2,4,MEDIUM
+Threat,Residential Area,5,2,MEDIUM
+Suspicious Activity,Hostel,2,3,MEDIUM
+Assault,Park,4,4,HIGH
+Assault,Bus Stop,4,4,HIGH
+Other,Hostel,4,3,MEDIUM
+Harassment,Market,4,4,HIGH
+Medical Emergency,Residential Area,4,5,HIGH
+Harassment,Park,4,2,MEDIUM
+Threat,Residential Area,1,2,LOW
+Medical Emergency,Hostel,4,3,MEDIUM
+Medical Emergency,Residential Area,4,1,MEDIUM
+Unsafe Location,Bus Stop,5,1,MEDIUM
+Unsafe Location,Road,3,2,MEDIUM
+Other,Hostel,2,3,MEDIUM
+Unsafe Location,Residential Area,4,3,MEDIUM
+Assault,Railway Station,5,3,MEDIUM
+Medical Emergency,Residential Area,1,3,MEDIUM
+Assault,Bus Stop,1,1,LOW
+Medical Emergency,Railway Station,3,1,MEDIUM
+Other,Park,4,5,HIGH
+Other,Railway Station,1,3,MEDIUM
+Assault,Residential Area,4,5,HIGH
+Accident,College,2,1,LOW
+Accident,Residential Area,2,4,MEDIUM
+Threat,Park,2,1,LOW
+Threat,Residential Area,3,4,MEDIUM
+Threat,Railway Station,5,1,MEDIUM
+Other,Residential Area,2,4,MEDIUM
+Medical Emergency,Residential Area,1,5,MEDIUM
+Harassment,Residential Area,5,3,MEDIUM
+Harassment,Railway Station,1,3,MEDIUM
+Harassment,Market,4,5,HIGH
+Unsafe Location,Market,1,1,LOW
+Accident,Residential Area,2,4,MEDIUM
+Other,Road,5,2,MEDIUM
+Suspicious Activity,Residential Area,3,3,MEDIUM
+Harassment,Residential Area,2,3,MEDIUM
+Unsafe Location,Hostel,4,1,MEDIUM
+Suspicious Activity,Residential Area,2,3,MEDIUM
+Harassment,Residential Area,3,3,MEDIUM
+Harassment,Residential Area,4,2,MEDIUM
+Assault,Hostel,2,2,LOW
+Suspicious Activity,Market,2,3,MEDIUM
+Harassment,Market,3,1,MEDIUM
+Medical Emergency,Park,1,1,LOW
+Other,Railway Station,2,3,MEDIUM
+Threat,Residential Area,3,5,MEDIUM
+Suspicious Activity,Residential Area,2,4,MEDIUM
+Medical Emergency,Railway Station,4,5,HIGH
+Other,Market,5,5,CRITICAL
+Harassment,Residential Area,1,1,LOW
+Other,Railway Station,3,4,MEDIUM
+Unsafe Location,College,1,2,LOW
+Accident,Park,5,1,MEDIUM
+Threat,Park,1,5,MEDIUM
+Medical Emergency,College,4,4,HIGH
+Medical Emergency,Hostel,2,5,MEDIUM
+Unsafe Location,Residential Area,3,1,MEDIUM
+Assault,Road,2,3,MEDIUM
+Medical Emergency,Market,4,2,MEDIUM
+Accident,Bus Stop,1,3,MEDIUM
+Unsafe Location,Railway Station,4,5,HIGH
+Medical Emergency,Market,5,3,MEDIUM
+Harassment,Hostel,5,2,MEDIUM
+Medical Emergency,Railway Station,3,1,MEDIUM
+Unsafe Location,Hostel,5,4,HIGH
+Accident,Bus Stop,2,2,LOW
+Medical Emergency,Residential Area,4,5,HIGH
+Suspicious Activity,Road,1,3,MEDIUM
+Assault,Bus Stop,1,5,MEDIUM
+Assault,Road,1,1,LOW
+Unsafe Location,Park,5,1,MEDIUM
+Assault,Bus Stop,2,4,MEDIUM
+Accident,Park,2,3,MEDIUM
+Unsafe Location,Residential Area,2,5,MEDIUM
+Harassment,Park,3,4,MEDIUM
+Other,Bus Stop,5,4,HIGH
+Accident,Hostel,3,5,MEDIUM
+Medical Emergency,Road,4,1,MEDIUM
+Medical Emergency,Bus Stop,3,3,MEDIUM
+Accident,College,3,5,MEDIUM
+Assault,Road,5,3,MEDIUM
+Harassment,College,4,2,MEDIUM
+Other,Railway Station,4,2,MEDIUM
+Assault,Market,1,5,MEDIUM
+Accident,College,5,1,MEDIUM
+Other,Bus Stop,4,4,HIGH
+Other,Hostel,3,4,MEDIUM
+Threat,College,1,1,LOW
+Accident,Railway Station,2,4,MEDIUM
+Unsafe Location,Hostel,1,3,MEDIUM
+Threat,Railway Station,3,3,MEDIUM
+Other,Railway Station,1,2,LOW
+Threat,Road,3,1,MEDIUM
+Suspicious Activity,Market,3,2,MEDIUM
+Other,Road,1,1,LOW
+Unsafe Location,Hostel,5,5,CRITICAL
+Harassment,College,2,1,LOW
+Medical Emergency,Residential Area,1,1,LOW
+Other,College,5,5,CRITICAL
+Threat,Park,5,4,HIGH
+Other,Bus Stop,2,3,MEDIUM
+Other,Residential Area,5,4,HIGH
+Other,Market,2,3,MEDIUM
+Other,College,2,1,LOW
+Accident,Residential Area,4,1,MEDIUM
+Other,Road,2,1,LOW
+Harassment,Railway Station,2,2,LOW
+Harassment,Hostel,3,4,MEDIUM
+Other,Bus Stop,3,5,MEDIUM
+Harassment,Residential Area,1,5,MEDIUM
+Harassment,Market,1,2,LOW
+Unsafe Location,College,3,4,MEDIUM
+Other,Road,3,3,MEDIUM
+Assault,Railway Station,3,3,MEDIUM
+Unsafe Location,College,1,4,MEDIUM
+Assault,Park,3,1,MEDIUM
+Other,Residential Area,2,3,MEDIUM
+Other,College,5,2,MEDIUM
+Threat,Bus Stop,3,1,MEDIUM
+Harassment,Hostel,5,2,MEDIUM
+Suspicious Activity,Road,1,1,LOW
+Accident,College,5,1,MEDIUM
+Medical Emergency,Park,2,1,LOW
+Suspicious Activity,Road,5,5,CRITICAL
+Accident,Hostel,5,3,MEDIUM
+Other,Park,2,4,MEDIUM
+Medical Emergency,Railway Station,4,1,MEDIUM
+Unsafe Location,Park,2,4,MEDIUM
+Threat,Residential Area,4,5,HIGH
+Harassment,Residential Area,3,4,MEDIUM
+Medical Emergency,Bus Stop,4,3,MEDIUM
+Other,Residential Area,2,3,MEDIUM
+Suspicious Activity,Bus Stop,1,5,MEDIUM
+Unsafe Location,Bus Stop,4,2,MEDIUM
+Unsafe Location,College,5,2,MEDIUM
+Accident,Road,4,5,HIGH
+Medical Emergency,Market,1,5,MEDIUM
+Unsafe Location,Railway Station,3,3,MEDIUM
+Accident,Residential Area,3,1,MEDIUM
+Unsafe Location,Bus Stop,5,5,CRITICAL
+Threat,College,1,3,MEDIUM
+Assault,College,4,3,MEDIUM
+Assault,Market,3,1,MEDIUM
+Unsafe Location,Hostel,3,5,MEDIUM
+Other,College,5,2,MEDIUM
+Harassment,Bus Stop,4,4,HIGH
+Assault,Road,2,3,MEDIUM
+Harassment,Residential Area,2,2,LOW
+Assault,Road,2,4,MEDIUM
+Unsafe Location,Park,4,4,HIGH
+Harassment,Bus Stop,5,1,MEDIUM
+Harassment,College,4,4,HIGH
+Accident,Residential Area,5,5,CRITICAL
+Threat,Railway Station,4,5,HIGH
+Threat,Residential Area,2,1,LOW
+Threat,Bus Stop,1,4,MEDIUM
+Harassment,College,1,2,LOW
+Assault,Market,4,1,MEDIUM
+Suspicious Activity,Residential Area,4,3,MEDIUM
+Accident,Bus Stop,4,3,MEDIUM
+Threat,Residential Area,4,3,MEDIUM
+Medical Emergency,Park,5,2,MEDIUM
+Medical Emergency,Railway Station,3,1,MEDIUM
+Other,Residential Area,4,4,HIGH
+Other,Residential Area,2,1,LOW
+Accident,Railway Station,2,3,MEDIUM
+Assault,Road,2,5,MEDIUM
+Other,Road,1,3,MEDIUM
+Medical Emergency,Road,4,3,MEDIUM
+Threat,Residential Area,3,1,MEDIUM
+Assault,Road,5,5,CRITICAL
+Harassment,Road,1,1,LOW
+Accident,Bus Stop,1,5,MEDIUM
+Medical Emergency,Market,2,4,MEDIUM
+Unsafe Location,Residential Area,4,1,MEDIUM
+Medical Emergency,Road,3,2,MEDIUM
+Other,Road,2,4,MEDIUM
+Medical Emergency,College,5,1,MEDIUM
+Accident,Railway Station,4,5,HIGH
+Medical Emergency,Residential Area,5,2,MEDIUM
+Other,College,2,1,LOW
+Suspicious Activity,Market,2,5,MEDIUM
+Harassment,Residential Area,4,2,MEDIUM
+Other,Hostel,4,4,HIGH
+Suspicious Activity,Hostel,3,4,MEDIUM
+Assault,College,3,1,MEDIUM
+Assault,Hostel,5,2,MEDIUM
+Suspicious Activity,Hostel,4,3,MEDIUM
+Accident,Railway Station,3,4,MEDIUM
+Assault,Bus Stop,3,1,MEDIUM
+Unsafe Location,Hostel,3,3,MEDIUM
+Threat,Railway Station,2,3,MEDIUM
+Unsafe Location,Residential Area,2,3,MEDIUM
+Suspicious Activity,Market,4,5,HIGH
+Medical Emergency,Park,5,3,MEDIUM
+Assault,Railway Station,5,2,MEDIUM
+Accident,Bus Stop,4,2,MEDIUM
+Harassment,Market,4,3,MEDIUM
+Harassment,College,3,5,MEDIUM
+Assault,College,4,3,MEDIUM
+Threat,Market,1,3,MEDIUM
+Suspicious Activity,Bus Stop,3,4,MEDIUM
+Suspicious Activity,Railway Station,4,3,MEDIUM
+Accident,Market,2,3,MEDIUM
+Assault,College,3,3,MEDIUM
+Medical Emergency,Market,1,1,LOW
+Assault,Hostel,3,4,MEDIUM
+Medical Emergency,Residential Area,1,4,MEDIUM
+Threat,Hostel,2,1,LOW
+Accident,Residential Area,5,1,MEDIUM
+Accident,Market,2,1,LOW
+Assault,Road,2,2,LOW
+Threat,College,5,1,MEDIUM
+Accident,Railway Station,3,4,MEDIUM
+Harassment,Hostel,3,2,MEDIUM
+Other,College,1,4,MEDIUM
+Threat,Railway Station,3,5,MEDIUM
+Harassment,Hostel,3,2,MEDIUM
+Unsafe Location,Park,2,2,LOW
+Other,Hostel,3,4,MEDIUM
+Harassment,Bus Stop,1,3,MEDIUM
+Other,Bus Stop,4,4,HIGH
+Unsafe Location,Road,1,2,LOW
+Assault,Residential Area,1,4,MEDIUM
+Accident,College,3,2,MEDIUM
+Suspicious Activity,College,3,5,MEDIUM
+Medical Emergency,Residential Area,4,5,HIGH
+Unsafe Location,Market,1,1,LOW
+Unsafe Location,Railway Station,5,5,CRITICAL
+Other,Hostel,4,3,MEDIUM
+Medical Emergency,Railway Station,1,3,MEDIUM
+Assault,Bus Stop,2,4,MEDIUM
+Unsafe Location,Road,1,3,MEDIUM
+Unsafe Location,Market,1,4,MEDIUM
+Medical Emergency,Market,5,5,CRITICAL
+Assault,Road,2,4,MEDIUM
+Other,College,3,4,MEDIUM
+Medical Emergency,Hostel,5,5,CRITICAL
+Suspicious Activity,Bus Stop,5,4,HIGH
+Suspicious Activity,Bus Stop,5,4,HIGH
+Assault,Hostel,2,5,MEDIUM
+Unsafe Location,College,2,5,MEDIUM
+Threat,Bus Stop,5,2,MEDIUM
+Medical Emergency,Park,4,5,HIGH
+Other,Hostel,3,4,MEDIUM
+Unsafe Location,Market,3,3,MEDIUM
+Suspicious Activity,Park,5,5,CRITICAL
+Other,Residential Area,3,4,MEDIUM
+Medical Emergency,Residential Area,3,1,MEDIUM
+Suspicious Activity,Bus Stop,1,5,MEDIUM
+Accident,Park,1,4,MEDIUM
+Harassment,Bus Stop,4,4,HIGH
+Suspicious Activity,Residential Area,4,3,MEDIUM
+Harassment,Market,2,5,MEDIUM
+Unsafe Location,Road,4,4,HIGH
+Harassment,Railway Station,3,4,MEDIUM
+Threat,Hostel,4,4,HIGH
+Unsafe Location,Bus Stop,1,5,MEDIUM
+Other,Road,1,5,MEDIUM
+Assault,College,1,3,MEDIUM
+Threat,Market,1,4,MEDIUM
+Threat,Market,2,1,LOW
+Accident,Railway Station,2,5,MEDIUM
+Harassment,Railway Station,4,3,MEDIUM
+Harassment,Park,1,2,LOW
+Assault,Railway Station,3,4,MEDIUM
+Suspicious Activity,Hostel,3,2,MEDIUM
+Suspicious Activity,Railway Station,1,5,MEDIUM
+Unsafe Location,Residential Area,1,2,LOW
+Assault,Residential Area,1,3,MEDIUM
+Medical Emergency,Park,1,2,LOW
+Medical Emergency,Park,2,3,MEDIUM
+Accident,Road,2,3,MEDIUM
+Threat,Park,4,4,HIGH
+Unsafe Location,Park,5,1,MEDIUM
+Assault,Hostel,4,5,HIGH
+Assault,Park,1,3,MEDIUM
+Other,Market,2,3,MEDIUM
+Assault,Residential Area,5,2,MEDIUM
+Threat,College,3,1,MEDIUM
+Harassment,Park,2,3,MEDIUM
+Unsafe Location,Market,3,4,MEDIUM
+Threat,College,5,1,MEDIUM
+Harassment,College,2,4,MEDIUM
+Assault,Railway Station,3,2,MEDIUM
+Suspicious Activity,Bus Stop,3,3,MEDIUM
+Accident,College,5,3,MEDIUM
+Assault,Park,3,2,MEDIUM
+Unsafe Location,College,2,2,LOW
+Assault,Railway Station,2,3,MEDIUM
+Other,Railway Station,4,5,HIGH
+Accident,Railway Station,4,3,MEDIUM
+Assault,Bus Stop,2,4,MEDIUM
+Harassment,Market,2,2,LOW
+Unsafe Location,Residential Area,5,1,MEDIUM
+Medical Emergency,Railway Station,4,4,HIGH
+Harassment,Bus Stop,2,5,MEDIUM
+Medical Emergency,Road,5,1,MEDIUM
+Unsafe Location,Hostel,3,5,MEDIUM
+Assault,Railway Station,2,5,MEDIUM
+Medical Emergency,Park,4,2,MEDIUM
+Accident,Bus Stop,2,2,LOW
+Assault,Residential Area,4,1,MEDIUM
+Accident,Market,5,2,MEDIUM
+Accident,Residential Area,4,2,MEDIUM
+Assault,Road,1,4,MEDIUM
+Accident,Bus Stop,5,2,MEDIUM
+Unsafe Location,College,2,1,LOW
+Medical Emergency,Residential Area,4,1,MEDIUM
+Accident,Railway Station,2,4,MEDIUM
+Accident,College,3,4,MEDIUM
+Medical Emergency,College,4,5,HIGH
+Other,Road,5,5,CRITICAL
+Medical Emergency,Market,5,4,HIGH
+Unsafe Location,Railway Station,1,4,MEDIUM
+Unsafe Location,Road,3,5,MEDIUM
+Assault,Residential Area,5,1,MEDIUM
+Unsafe Location,Road,5,1,MEDIUM
+Accident,Railway Station,2,2,LOW
+Accident,Railway Station,1,4,MEDIUM
+Medical Emergency,Bus Stop,5,5,CRITICAL
+Suspicious Activity,Bus Stop,5,4,HIGH
+Medical Emergency,Railway Station,1,2,LOW
+Suspicious Activity,Residential Area,2,4,MEDIUM
+Medical Emergency,Market,1,4,MEDIUM
+Medical Emergency,Bus Stop,2,2,LOW
+Threat,College,5,1,MEDIUM
+Medical Emergency,Residential Area,5,1,MEDIUM
+Unsafe Location,Residential Area,4,1,MEDIUM
+Accident,Road,4,2,MEDIUM
+Unsafe Location,Residential Area,5,2,MEDIUM
+Accident,Railway Station,4,2,MEDIUM
+Other,Hostel,4,2,MEDIUM
+Unsafe Location,Road,1,1,LOW
+Accident,Bus Stop,5,4,HIGH
+Assault,Hostel,2,3,MEDIUM
+Assault,Residential Area,5,4,HIGH
+Harassment,College,5,4,HIGH
+Assault,Hostel,3,5,MEDIUM
+Medical Emergency,Market,5,5,CRITICAL
+Threat,Park,2,5,MEDIUM
+Unsafe Location,Market,3,3,MEDIUM
+Unsafe Location,Railway Station,1,1,LOW
+Harassment,Hostel,1,4,MEDIUM
+Medical Emergency,College,1,5,MEDIUM
+Unsafe Location,Residential Area,1,2,LOW
+Accident,Railway Station,2,3,MEDIUM
+Assault,Park,5,4,HIGH
+Suspicious Activity,Bus Stop,3,4,MEDIUM
+Accident,Railway Station,1,2,LOW
+Accident,Railway Station,3,5,MEDIUM
+Accident,Railway Station,2,4,MEDIUM
+Assault,Road,3,3,MEDIUM
+Medical Emergency,Bus Stop,5,3,MEDIUM
+Other,Hostel,1,4,MEDIUM
+Threat,Road,3,4,MEDIUM
+Threat,Residential Area,3,5,MEDIUM
+Unsafe Location,Bus Stop,2,2,LOW
+Other,Railway Station,4,1,MEDIUM
+Unsafe Location,Market,1,4,MEDIUM
+Harassment,Market,3,1,MEDIUM
+Harassment,Market,2,2,LOW
+Suspicious Activity,Park,2,3,MEDIUM
+Suspicious Activity,Residential Area,4,3,MEDIUM
+Harassment,Market,2,4,MEDIUM
+Harassment,Road,4,1,MEDIUM
+Assault,Hostel,2,4,MEDIUM
+Other,Railway Station,1,4,MEDIUM
+Suspicious Activity,Road,5,1,MEDIUM
+Unsafe Location,Park,3,1,MEDIUM
+Threat,College,5,3,MEDIUM
+Medical Emergency,Park,5,5,CRITICAL
+Other,Residential Area,2,2,LOW
+Assault,Residential Area,5,4,HIGH
+Other,Railway Station,5,2,MEDIUM
+Threat,Market,5,4,HIGH
+Suspicious Activity,Park,5,4,HIGH
+Assault,Market,3,3,MEDIUM
+Threat,Hostel,1,3,MEDIUM
+Unsafe Location,Residential Area,4,3,MEDIUM
+Medical Emergency,College,4,5,HIGH
+Accident,Road,5,3,MEDIUM
+Unsafe Location,Residential Area,1,5,MEDIUM
+Harassment,Market,1,1,LOW
+Assault,Residential Area,2,5,MEDIUM
+Medical Emergency,Market,5,2,MEDIUM
+Accident,Park,3,3,MEDIUM
+Threat,Railway Station,2,1,LOW
+Medical Emergency,Market,5,5,CRITICAL
+Other,Hostel,3,2,MEDIUM
+Unsafe Location,Residential Area,1,4,MEDIUM
+Medical Emergency,Railway Station,3,2,MEDIUM
+Medical Emergency,Hostel,5,2,MEDIUM
+Suspicious Activity,Market,3,2,MEDIUM
+Assault,Park,5,5,CRITICAL
+Other,Hostel,5,5,CRITICAL
+Suspicious Activity,Residential Area,3,4,MEDIUM
+Suspicious Activity,Road,3,1,MEDIUM
+Threat,College,1,5,MEDIUM
+Medical Emergency,College,1,2,LOW
+Threat,Hostel,4,5,HIGH
+Assault,Hostel,3,3,MEDIUM
+Assault,Road,3,1,MEDIUM
+Suspicious Activity,Residential Area,5,1,MEDIUM
+Assault,Hostel,1,4,MEDIUM
+Accident,College,4,5,HIGH
+Accident,Hostel,4,4,HIGH
+Harassment,Park,4,4,HIGH
+Suspicious Activity,Market,2,2,LOW
+Other,College,3,3,MEDIUM
+Assault,Residential Area,3,1,MEDIUM
+Threat,Bus Stop,4,4,HIGH
+Suspicious Activity,Road,4,1,MEDIUM
+Threat,Hostel,3,2,MEDIUM
+Other,Market,3,1,MEDIUM
+Other,Park,1,5,MEDIUM
+Medical Emergency,College,5,2,MEDIUM
+Harassment,Railway Station,2,4,MEDIUM
+Threat,Railway Station,5,2,MEDIUM
+Medical Emergency,Railway Station,4,2,MEDIUM
+Other,Hostel,4,3,MEDIUM
+Harassment,Railway Station,4,1,MEDIUM
+Suspicious Activity,College,1,2,LOW
+Assault,Residential Area,5,4,HIGH
+Medical Emergency,College,4,3,MEDIUM
+Threat,Hostel,1,4,MEDIUM
+Harassment,Hostel,4,4,HIGH
+Medical Emergency,Market,1,5,MEDIUM
+Accident,College,1,5,MEDIUM
+Harassment,Railway Station,1,3,MEDIUM
+Assault,Railway Station,4,5,HIGH
+Unsafe Location,Bus Stop,5,1,MEDIUM
+Other,Residential Area,3,2,MEDIUM
+Suspicious Activity,Road,2,3,MEDIUM
+Accident,Railway Station,1,5,MEDIUM
+Suspicious Activity,Market,2,4,MEDIUM
+Threat,Market,1,3,MEDIUM
+Other,Road,1,2,LOW
+Accident,Railway Station,3,4,MEDIUM
+Harassment,Market,2,3,MEDIUM
+Unsafe Location,Hostel,5,4,HIGH
+Other,Market,1,1,LOW
+Assault,Market,1,4,MEDIUM
+Medical Emergency,Road,3,1,MEDIUM
+Harassment,Railway Station,2,1,LOW
+Accident,Bus Stop,3,2,MEDIUM
+Accident,Market,1,3,MEDIUM
+Assault,Market,2,4,MEDIUM
+Medical Emergency,Hostel,3,1,MEDIUM
+Accident,Residential Area,4,2,MEDIUM
+Medical Emergency,Park,5,3,MEDIUM
+Threat,Market,4,4,HIGH
+Suspicious Activity,Road,1,4,MEDIUM
+Other,Hostel,1,5,MEDIUM
+Assault,Road,3,4,MEDIUM
+Accident,Railway Station,2,5,MEDIUM
+Assault,Road,2,2,LOW
+Other,Hostel,5,4,HIGH
+Accident,Road,5,5,CRITICAL
+Harassment,Road,3,3,MEDIUM
+Unsafe Location,Bus Stop,1,4,MEDIUM
+Suspicious Activity,Park,5,2,MEDIUM
+Medical Emergency,Market,5,3,MEDIUM
+Other,Railway Station,2,5,MEDIUM
+Harassment,Road,4,3,MEDIUM
+Suspicious Activity,Bus Stop,3,4,MEDIUM
+Threat,Bus Stop,2,1,LOW
+Threat,Market,3,4,MEDIUM
+Unsafe Location,Residential Area,4,5,HIGH
+Unsafe Location,Park,2,4,MEDIUM
+Suspicious Activity,College,3,5,MEDIUM
+Harassment,Bus Stop,3,2,MEDIUM
+Harassment,Road,1,3,MEDIUM
+Accident,Bus Stop,4,1,MEDIUM
+Suspicious Activity,Market,3,5,MEDIUM
+Suspicious Activity,Park,4,5,HIGH
+Suspicious Activity,Park,4,4,HIGH
+Other,Bus Stop,2,1,LOW
+Assault,Hostel,1,5,MEDIUM
+Other,Park,1,4,MEDIUM
+Harassment,Market,2,5,MEDIUM
+Medical Emergency,Railway Station,1,1,LOW
+Other,Railway Station,4,4,HIGH
+Assault,Road,1,4,MEDIUM
+Harassment,Railway Station,1,1,LOW
+Suspicious Activity,Bus Stop,3,4,MEDIUM
+Assault,College,3,2,MEDIUM
+Threat,Railway Station,2,2,LOW
+Other,Park,1,2,LOW
+Other,Market,3,2,MEDIUM
+Accident,Railway Station,3,1,MEDIUM
+Suspicious Activity,College,2,4,MEDIUM
+Harassment,Hostel,2,3,MEDIUM
+Assault,Road,1,5,MEDIUM
+Threat,College,5,2,MEDIUM
+Medical Emergency,Market,4,5,HIGH
+Medical Emergency,Park,2,2,LOW
+Accident,Residential Area,1,3,MEDIUM
+Threat,Bus Stop,2,2,LOW
+Other,College,1,5,MEDIUM
+Harassment,Market,5,4,HIGH
+Harassment,Market,3,2,MEDIUM
+Threat,College,5,3,MEDIUM
+Suspicious Activity,Market,4,2,MEDIUM
+Unsafe Location,Park,4,2,MEDIUM
+Harassment,Park,2,3,MEDIUM
+Suspicious Activity,Bus Stop,4,1,MEDIUM
+Accident,Bus Stop,4,2,MEDIUM
+Suspicious Activity,Park,3,4,MEDIUM
+Harassment,Park,4,1,MEDIUM
+Assault,College,5,1,MEDIUM
+Suspicious Activity,Market,3,5,MEDIUM
+Medical Emergency,Bus Stop,1,2,LOW
+Accident,Road,3,1,MEDIUM
+Accident,Residential Area,3,1,MEDIUM
+Suspicious Activity,Bus Stop,3,4,MEDIUM
+Assault,Market,2,3,MEDIUM
+Other,Park,5,1,MEDIUM
+Medical Emergency,Road,1,4,MEDIUM
+Assault,College,3,1,MEDIUM
+Other,Hostel,3,4,MEDIUM
+Threat,College,4,1,MEDIUM
+Harassment,College,1,2,LOW
+Harassment,Road,5,5,CRITICAL
+Medical Emergency,Market,3,3,MEDIUM
+Assault,Market,2,3,MEDIUM
+Threat,Hostel,4,4,HIGH
+Medical Emergency,Hostel,2,5,MEDIUM
+Other,Park,1,5,MEDIUM
+Unsafe Location,Bus Stop,1,3,MEDIUM
+Medical Emergency,Road,2,1,LOW
+Suspicious Activity,Park,5,4,HIGH
+Harassment,Park,1,5,MEDIUM
+Other,Railway Station,5,2,MEDIUM
+Medical Emergency,Bus Stop,3,1,MEDIUM
+Medical Emergency,Market,2,3,MEDIUM
+Medical Emergency,Market,2,3,MEDIUM
+Suspicious Activity,Road,1,3,MEDIUM
+Accident,Residential Area,2,1,LOW
+Medical Emergency,Bus Stop,5,3,MEDIUM
+Assault,Market,4,4,HIGH
+Suspicious Activity,Residential Area,3,1,MEDIUM
+Suspicious Activity,Hostel,2,1,LOW
+Threat,Railway Station,4,1,MEDIUM
+Accident,Park,2,5,MEDIUM
+Unsafe Location,Residential Area,2,3,MEDIUM
+Assault,Road,5,5,CRITICAL
+Medical Emergency,Bus Stop,2,5,MEDIUM
+Medical Emergency,Road,3,3,MEDIUM
+Harassment,Road,4,1,MEDIUM
+Other,Hostel,5,2,MEDIUM
+Unsafe Location,Residential Area,5,5,CRITICAL
+Medical Emergency,Railway Station,4,5,HIGH
+Threat,Residential Area,3,4,MEDIUM
+Unsafe Location,College,3,3,MEDIUM
+Harassment,College,1,4,MEDIUM
+Suspicious Activity,Hostel,3,5,MEDIUM
+Medical Emergency,Hostel,2,4,MEDIUM
+Other,Bus Stop,1,4,MEDIUM
+Other,Road,5,4,HIGH
+Other,College,2,4,MEDIUM
+Threat,Market,3,5,MEDIUM
+Harassment,Road,2,3,MEDIUM
+Other,Road,3,3,MEDIUM
+Threat,Park,2,5,MEDIUM
+Assault,Hostel,2,3,MEDIUM
+Harassment,Bus Stop,2,5,MEDIUM
+Harassment,College,2,4,MEDIUM
+Assault,Park,4,2,MEDIUM
+Suspicious Activity,College,4,4,HIGH
+Accident,Road,3,4,MEDIUM
+Accident,Railway Station,4,5,HIGH
+Other,Market,2,2,LOW
+Other,Railway Station,4,1,MEDIUM
+Medical Emergency,Bus Stop,4,2,MEDIUM
+Accident,Railway Station,1,3,MEDIUM
+Suspicious Activity,College,2,2,LOW
+Harassment,Park,4,2,MEDIUM
+Unsafe Location,Market,5,2,MEDIUM
+Accident,Market,3,5,MEDIUM
+Harassment,Road,3,3,MEDIUM
+Accident,Hostel,1,1,LOW
+Medical Emergency,Market,5,1,MEDIUM
+Accident,Residential Area,3,5,MEDIUM
+Other,Hostel,1,3,MEDIUM
+Suspicious Activity,Market,3,5,MEDIUM
+Harassment,Market,4,2,MEDIUM
+Threat,Railway Station,5,4,HIGH
+Harassment,Road,4,1,MEDIUM
+Medical Emergency,Market,4,1,MEDIUM
+Accident,Hostel,1,2,LOW
+Harassment,Market,2,2,LOW
+Assault,College,5,4,HIGH
+Assault,Hostel,4,2,MEDIUM
+Medical Emergency,Bus Stop,3,4,MEDIUM
+Suspicious Activity,Hostel,2,1,LOW
+Suspicious Activity,Residential Area,1,5,MEDIUM
+Threat,Market,1,2,LOW
+Threat,College,4,4,HIGH
+Assault,Railway Station,5,4,HIGH
+Suspicious Activity,Railway Station,2,3,MEDIUM
+Assault,Bus Stop,3,5,MEDIUM
+Suspicious Activity,College,5,5,CRITICAL
+Harassment,Market,4,4,HIGH
+Harassment,College,3,5,MEDIUM
+Accident,Railway Station,2,1,LOW
+Threat,Market,4,1,MEDIUM
+Unsafe Location,Bus Stop,4,2,MEDIUM
+Harassment,Residential Area,2,1,LOW
+Medical Emergency,Market,3,4,MEDIUM
+Other,Road,5,2,MEDIUM
+Medical Emergency,Railway Station,4,5,HIGH
+Assault,Railway Station,1,5,MEDIUM
+Harassment,Railway Station,1,5,MEDIUM
+Assault,Hostel,2,5,MEDIUM
+Medical Emergency,Park,3,4,MEDIUM
+Harassment,Bus Stop,2,1,LOW
+Accident,Bus Stop,1,5,MEDIUM
+Other,Railway Station,2,1,LOW
+Harassment,Road,3,5,MEDIUM
+Harassment,Road,1,5,MEDIUM
+Accident,Residential Area,3,2,MEDIUM
+Accident,Hostel,1,3,MEDIUM
+Accident,College,2,1,LOW
+Medical Emergency,Residential Area,1,3,MEDIUM
+Accident,College,4,2,MEDIUM
+Other,Park,2,5,MEDIUM
+Accident,Road,4,2,MEDIUM
+Unsafe Location,Market,1,1,LOW
+Harassment,Road,5,2,MEDIUM
+Medical Emergency,Market,4,5,HIGH
+Harassment,Residential Area,2,2,LOW
+Suspicious Activity,College,2,4,MEDIUM
+Accident,Hostel,1,4,MEDIUM
+Suspicious Activity,Residential Area,5,3,MEDIUM
+Unsafe Location,Park,4,3,MEDIUM
+Harassment,Road,4,3,MEDIUM
+Harassment,Hostel,2,2,LOW
+Medical Emergency,Residential Area,5,1,MEDIUM
+Other,Residential Area,3,5,MEDIUM
+Threat,Market,5,3,MEDIUM
+Unsafe Location,Park,5,3,MEDIUM
+Medical Emergency,College,3,4,MEDIUM
+Medical Emergency,Residential Area,4,5,HIGH
+Assault,Residential Area,5,3,MEDIUM
+Medical Emergency,Hostel,5,3,MEDIUM
+Accident,Hostel,3,3,MEDIUM
+Suspicious Activity,Residential Area,5,1,MEDIUM
+Accident,Park,2,2,LOW
+Harassment,Market,1,1,LOW
+Other,Bus Stop,4,3,MEDIUM
+Harassment,Residential Area,4,5,HIGH
+Harassment,Market,3,2,MEDIUM
+Suspicious Activity,Market,2,1,LOW
+Accident,College,3,2,MEDIUM
+Harassment,College,2,4,MEDIUM
+Threat,Market,5,4,HIGH
+Suspicious Activity,Road,4,5,HIGH
+Accident,Railway Station,2,5,MEDIUM

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Emergency | SafeShield</title>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        .header {
+            background: #111827;
+            color: white;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .back {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .status {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .ACTIVE {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .ACKNOWLEDGED {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .RESPONDING {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .RESOLVED {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .timeline {
+            border-left: 3px solid #d1d5db;
+            margin: 20px 0 0 10px;
+            padding-left: 25px;
+        }
+
+        .timeline-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background: #2563eb;
+            border-radius: 50%;
+            position: absolute;
+            left: -32px;
+            top: 4px;
+        }
+
+        .timeline-status {
+            font-weight: bold;
+        }
+
+        .timeline-time {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .location {
+            background: #f9fafb;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 15px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        .notification {
+            padding: 15px;
+            border-radius: 8px;
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 10px;
+	    line-height: 1.6;
+
+        }
+
+        .empty {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .empty h2 {
+            margin-bottom: 10px;
+        }
+
+        .live {
+            color: #15803d;
+            font-size: 13px;
+            font-weight: bold;
+        }
+.resolution-card {
+    margin-top: 20px;
+    background: #ecfdf5;
+    border-left: 5px solid #16a34a;
+    padding: 18px;
+    border-radius: 10px;
+}
+
+.resolution-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #166534;
+}
+
+.resolution-text {
+    color: #374151;
+    line-height: 1.6;
+}
+.closed-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 18px;
+    padding: 18px;
+    background: #ecfdf5;
+    border: 1px solid #86efac;
+    border-left: 5px solid #16a34a;
+    border-radius: 10px;
+}
+
+.closed-icon {
+    font-size: 28px;
+}
+
+.closed-title {
+    font-size: 19px;
+    font-weight: bold;
+    color: #166534;
+    margin-bottom: 6px;
+}
+
+.closed-text {
+    color: #374151;
+    line-height: 1.5;
+}
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🛡️ SafeShield</h1>
+    <a href="/dashboard" class="back">← Back to Dashboard</a>
+</div>
+
+<div class="container">
+
+    {% if incident %}
+
+        <div class="card">
+            <h2>🚨 My Emergency</h2>
+
+            <p>
+                <strong>Incident ID:</strong>
+                #{{ incident.id }}
+            </p>
+
+            <p>
+                <strong>Current Status:</strong>
+            </p>
+	    {% if incident and incident.status == "RESOLVED" %}
+
+	    <div class="closed-card">
+    		<div class="closed-icon">✅</div>
+
+    	        <div>
+        	    <div class="closed-title">Emergency Closed</div>
+
+        	    <div class="closed-text">
+            		This SafeShield incident has been resolved and closed.
+            		No further response coordination is currently active for this incident.
+        	    </div>
+    		</div>
+	    </div>
+
+	    {% endif %}
+            <span id="statusBadge"
+                  class="status {{ incident.status }}">
+                {{ incident.status }}
+            </span>
+
+            <p class="live">
+                ● Live status monitoring enabled
+            </p>
+        </div>
+
+
+        <div class="card">
+            <h2>📢 Notifications</h2>
+
+            <div id="notificationArea">
+
+                {% if incident.status == "ACTIVE" %}
+                    <div class="notification">
+                        🚨 Your emergency report has been received.
+                    </div>
+                {% elif incident.status == "ACKNOWLEDGED" %}
+                    <div class="notification">
+                        ✅ Your emergency has been acknowledged by the authority.
+                    </div>
+                {% elif incident.status == "RESPONDING" %}
+                    <div class="notification">
+                        🚑 Response is being coordinated for your incident.
+                    </div>
+                {% elif incident.status == "RESOLVED" %}
+                    <div class="notification">
+                        ✅ Your incident has been marked as resolved.
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h2>📋 Incident Timeline</h2>
+
+            <div class="timeline" id="timeline">
+
+                {% for item in status_history %}
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-status">
+                            {% if item.new_status == "ACTIVE" %}
+                                🔴 SOS Received
+                            {% elif item.new_status == "ACKNOWLEDGED" %}
+                                🟡 Authority Acknowledged
+                            {% elif item.new_status == "RESPONDING" %}
+                                🔵 Response Being Coordinated
+                            {% elif item.new_status == "RESOLVED" %}
+                                🟢 Incident Resolved
+                            {% else %}
+                                {{ item.new_status }}
+                            {% endif %}
+                        </div>
+
+                        <div class="timeline-time">
+                            {{ item.changed_at.strftime("%d %b %Y, %I:%M:%S %p") }}
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h2>📍 Emergency Location</h2>
+
+            <div class="location">
+
+                <p>
+                    <strong>Latitude:</strong>
+                    {{ incident.latitude }}
+                </p>
+
+                <p>
+                    <strong>Longitude:</strong>
+                    {{ incident.longitude }}
+                </p>
+
+                <a
+                    class="map-link"
+                    href="https://www.google.com/maps?q={{ incident.latitude }},{{ incident.longitude }}"
+                    target="_blank"
+                >
+                    🗺️ View My Reported Location
+                </a>
+
+            </div>
+        </div>
+{% if incident and incident.status == "RESOLVED" and incident.resolution_summary %}
+
+<div class="resolution-card">
+
+    <div class="resolution-title">
+        ✅ Resolution Summary
+    </div>
+
+    <div class="resolution-text">
+        {{ incident.resolution_summary }}
+    </div>
+
+</div>
+
+{% endif %}
+    {% else %}
+
+        <div class="card empty">
+
+            <h2>🟢 No Active Emergency</h2>
+
+            <p>
+                You currently don't have an active SafeShield emergency incident.
+            </p>
+
+            <a href="/dashboard" class="map-link">
+                ← Return to Dashboard
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+
+{% if incident %}
+
+<script>
+
+    const socket = io();
+
+    socket.on("my_incident_status_updated", function(data) {
+
+        if (data.id !== {{ incident.id }}) {
+            return;
+        }
+
+        const status = data.new_status;
+
+        const badge = document.getElementById("statusBadge");
+
+        badge.textContent = status;
+
+        badge.className = "status " + status;
+
+
+        const notificationArea =
+            document.getElementById("notificationArea");
+
+        let message = "";
+
+        if (status === "ACKNOWLEDGED") {
+
+    	    message =
+        	"✅ Your emergency has been acknowledged by the authority.";
+
+	} else if (status === "RESPONDING") {
+
+    	    message =
+        	"🚑 Response is being coordinated for your emergency.";
+
+	} else if (status === "RESOLVED") {
+
+    	    message =
+        	"✅ Emergency Resolved<br>" +
+        	"Your SafeShield incident has been marked as resolved.<br>" +
+        	"Response coordination for this incident has ended.";
+	 }
+        if (message) {
+
+            notificationArea.innerHTML =
+                '<div class="notification">' +
+                message +
+                '</div>';
+
+        }
+
+    });
+
+</script>
+
+{% endif %}
+
+</body>
+</html>

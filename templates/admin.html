@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SafeShield Monitoring Center</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+            color: #222;
+        }
+
+        header {
+            background: #17202a;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .online {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1400px;
+            margin: 25px auto;
+        }
+
+        /* ============================= */
+        /* STATISTICS */
+        /* ============================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(190px, 1fr));
+
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .danger {
+            color: #e74c3c;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.08);
+
+            border-left: 5px solid #17202a;
+        }
+
+        .stat-card h3 {
+            margin: 0 0 10px 0;
+        }
+
+        .stat-card p {
+            margin: 0;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .stat-card small {
+            color: #666;
+        }
+
+        /* ============================= */
+        /* TABLE */
+        /* ============================= */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 1150px;
+
+            border-collapse: collapse;
+            background: white;
+
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        th {
+            background: #17202a;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* ============================= */
+        /* STATUS */
+        /* ============================= */
+
+        .active {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .acknowledged {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .responding {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .resolved {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* ============================= */
+        /* PRIORITY */
+        /* ============================= */
+
+        .priority-critical {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        .priority-high {
+            color: #e67e22;
+            font-weight: bold;
+        }
+
+        .priority-medium {
+            color: #f1c40f;
+            font-weight: bold;
+        }
+
+        .priority-low {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* ============================= */
+        /* ESCALATION */
+        /* ============================= */
+
+        .escalated {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .normal {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .level-1 {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .level-2 {
+            color: #e67e22;
+            font-weight: bold;
+        }
+
+        .level-3 {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        /* ============================= */
+        /* BUTTONS */
+        /* ============================= */
+
+        button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 2px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .btn-ack {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn-response {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-resolve {
+            background: #27ae60;
+            color: white;
+        }
+        .logout-btn {
+    	    display: inline-block;
+   	    padding: 10px 18px;
+  	    background: #dc3545;
+	    color: white;
+	    text-decoration: none;
+	    border-radius: 6px;
+ 	   font-weight: bold;
+	}
+
+	.logout-btn:hover {
+  	    opacity: 0.9;
+	}
+        /* ============================= */
+        /* MAP */
+        /* ============================= */
+
+        .map-link {
+            text-decoration: none;
+        }
+
+        /* ============================= */
+        /* FILTERS */
+        /* ============================= */
+
+        .filter-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .filter-input {
+            flex: 1;
+            min-width: 280px;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+            border-radius: 8px;
+
+            font-size: 15px;
+        }
+
+        .filter-select {
+            padding: 12px;
+
+            border: 1px solid #ccc;
+            border-radius: 8px;
+
+            font-size: 15px;
+            background: white;
+        }
+
+        .search-button {
+            padding: 12px 20px;
+
+            border: none;
+            border-radius: 8px;
+
+            cursor: pointer;
+            font-weight: bold;
+
+            background: #17202a;
+            color: white;
+        }
+
+        .reset-button {
+            padding: 12px 20px;
+
+            border-radius: 8px;
+            text-decoration: none;
+
+            background: #eee;
+            color: #333;
+        }
+
+        /* ============================= */
+        /* LIVE ALERT */
+        /* ============================= */
+
+        #liveAlert {
+            display: none;
+
+            background: #fff1f1;
+            border: 2px solid #e74c3c;
+
+            padding: 20px;
+            margin-bottom: 20px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 4px 12px rgba(231,76,60,0.20);
+        }
+
+        #alertMessage {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .view-alert-button {
+            display: inline-block;
+
+            background: #17202a;
+            color: white;
+
+            padding: 10px 15px;
+
+            border-radius: 6px;
+            text-decoration: none;
+
+            margin-right: 8px;
+        }
+
+        .dismiss-button {
+            background: #777;
+            color: white;
+
+            padding: 10px 15px;
+
+            border: none;
+            border-radius: 6px;
+        }
+
+        /* ============================= */
+        /* PAGINATION */
+        /* ============================= */
+
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .pagination a,
+        .pagination span {
+            margin: 5px;
+            padding: 8px 12px;
+
+            text-decoration: none;
+
+            border: 1px solid #ddd;
+            border-radius: 6px;
+
+            display: inline-block;
+        }
+
+        .pagination .current {
+            background: #333;
+            color: white;
+        }
+
+        /* ============================= */
+        /* RESPONSIVE */
+        /* ============================= */
+
+        @media (max-width: 800px) {
+
+            .container {
+                width: 96%;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            th,
+            td {
+                padding: 8px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- ============================= -->
+<!-- HEADER -->
+<!-- ============================= -->
+
+<header>
+
+    <h1>
+        🛡️ SafeShield Monitoring Center
+    </h1>
+
+    <p class="online">
+        🟢 SYSTEM ONLINE
+    </p>
+
+    <a href="{{ url_for('logout') }}" class="logout-btn">
+        Logout
+    </a>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- ============================= -->
+<!-- LIVE EMERGENCY ALERT -->
+<!-- ============================= -->
+
+<div id="liveAlert">
+
+    <h2 style="color:#e74c3c;margin-top:0;">
+        🚨 NEW EMERGENCY ALERT
+    </h2>
+
+    <div id="alertMessage">
+    
+    </div>
+
+    <div style="margin-top:15px;">
+
+        <a id="alertIncidentLink"
+           href="#"
+           class="view-alert-button">
+
+            👁️ VIEW INCIDENT
+
+        </a>
+
+        <button
+            onclick="closeAlert()"
+            class="dismiss-button">
+
+            Dismiss
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- DASHBOARD STATISTICS -->
+<!-- ============================= -->
+
+<div class="stats">
+
+
+    <!-- ACTIVE -->
+
+    <div class="card">
+
+        <h3>
+            🚨 Active Emergencies
+        </h3>
+
+        <div class="danger">
+
+            {{ active_count }}
+
+        </div>
+
+    </div>
+
+
+    <!-- TOTAL -->
+
+    <div class="card">
+
+        <h3>
+            📊 Total Incidents
+        </h3>
+
+        <div class="danger">
+
+            <h2>
+                {{ total_incidents }}
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- USERS -->
+
+    <div class="card">
+
+        <h3>
+            👥 Registered Users
+        </h3>
+
+        <div class="danger">
+
+            {{ users_count }}
+
+        </div>
+
+    </div>
+
+
+    <!-- ESCALATED -->
+
+    <div class="stat-card">
+
+        <h3>
+            🚨 Escalated
+        </h3>
+
+        <p>
+            {{ escalated_count }}
+        </p>
+
+        <small>
+            Incidents requiring attention
+        </small>
+
+    </div>
+
+
+    <!-- LEVEL 1 -->
+
+    <div class="stat-card">
+
+        <h3>
+            🟡 Level 1
+        </h3>
+
+        <p>
+            {{ level1_count }}
+        </p>
+
+        <small>
+            Attention
+        </small>
+
+    </div>
+
+
+    <!-- LEVEL 2 -->
+
+    <div class="stat-card">
+
+        <h3>
+            🟠 Level 2
+        </h3>
+
+        <p>
+            {{ level2_count }}
+        </p>
+
+        <small>
+            Urgent
+        </small>
+
+    </div>
+
+
+    <!-- LEVEL 3 -->
+
+    <div class="stat-card">
+
+        <h3>
+            🔴 Level 3
+        </h3>
+
+        <p>
+            {{ level3_count }}
+        </p>
+
+        <small>
+            Critical
+        </small>
+
+    </div>
+
+
+</div>
+
+<!-- ============================= -->
+<!-- ESCALATION VISUALIZATION -->
+<!-- ============================= -->
+
+<div class="card" style="margin-bottom:25px;">
+
+    <h2>
+        📊 Escalation Level Distribution
+    </h2>
+
+    <p style="color:#666;">
+        Current incidents grouped by escalation level.
+    </p>
+
+    <div style="
+        width:100%;
+        max-width:800px;
+        height:350px;
+        margin:auto;
+    ">
+
+        <canvas id="escalationChart"></canvas>
+
+    </div>
+
+</div>
+<!-- ================================= -->
+<!-- AI PRIORITY DISTRIBUTION -->
+<!-- ================================= -->
+
+<div class="card" style="margin-top:30px;">
+
+    <h2>🤖 AI Priority Distribution</h2>
+
+    <p style="color:#666;">
+        Current incidents grouped by AI-predicted priority.
+    </p>
+
+    <div style="
+        max-width:900px;
+        height:400px;
+        margin-top:20px;
+    ">
+
+        <canvas id="priorityChart"></canvas>
+
+    </div>
+
+</div>
+<!-- ================================= -->
+<!-- PRIORITY & ESCALATION ANALYTICS -->
+<!-- ================================= -->
+
+<div class="card" style="margin-top:30px;">
+
+    <h2>📋 Priority & Escalation Analytics</h2>
+
+    <p style="color:#666;">
+        Comparison of AI-predicted incident priority and escalation status.
+    </p>
+
+    <div style="
+        overflow-x:auto;
+        margin-top:20px;
+    ">
+
+        <table style="
+            width:100%;
+            min-width:650px;
+            border-collapse:collapse;
+        ">
+
+            <thead>
+
+                <tr>
+
+                    <th style="
+                        background:#17202a;
+                        color:white;
+                        padding:14px;
+                    ">
+                        AI Priority
+                    </th>
+
+                    <th style="
+                        background:#17202a;
+                        color:white;
+                        padding:14px;
+                    ">
+                        Total Incidents
+                    </th>
+
+                    <th style="
+                        background:#17202a;
+                        color:white;
+                        padding:14px;
+                    ">
+                        Escalated
+                    </th>
+
+                    <th style="
+                        background:#17202a;
+                        color:white;
+                        padding:14px;
+                    ">
+                        Escalation Rate
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+
+                <!-- CRITICAL -->
+
+                <tr>
+
+                    <td style="padding:14px;">
+
+                        <span class="priority-critical">
+                            🔴 CRITICAL
+                        </span>
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {{ priority_escalation["CRITICAL"]["total"] }}
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {{ priority_escalation["CRITICAL"]["escalated"] }}
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {% if priority_escalation["CRITICAL"]["total"] > 0 %}
+
+                            {{
+                                (
+                                    priority_escalation["CRITICAL"]["escalated"]
+                                    /
+                                    priority_escalation["CRITICAL"]["total"]
+                                    * 100
+                                ) | round(1)
+                            }}%
+
+                        {% else %}
+
+                            0%
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+
+                <!-- HIGH -->
+
+                <tr>
+
+                    <td style="padding:14px;">
+
+                        <span class="priority-high">
+                            🟠 HIGH
+                        </span>
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {{ priority_escalation["HIGH"]["total"] }}
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {{ priority_escalation["HIGH"]["escalated"] }}
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {% if priority_escalation["HIGH"]["total"] > 0 %}
+
+                            {{
+                                (
+                                    priority_escalation["HIGH"]["escalated"]
+                                    /
+                                    priority_escalation["HIGH"]["total"]
+                                    * 100
+                                ) | round(1)
+                            }}%
+
+                        {% else %}
+
+                            0%
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+
+                <!-- MEDIUM -->
+
+                <tr>
+
+                    <td style="padding:14px;">
+
+                        <span class="priority-medium">
+                            🟡 MEDIUM
+                        </span>
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {{ priority_escalation["MEDIUM"]["total"] }}
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {{ priority_escalation["MEDIUM"]["escalated"] }}
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {% if priority_escalation["MEDIUM"]["total"] > 0 %}
+
+                            {{
+                                (
+                                    priority_escalation["MEDIUM"]["escalated"]
+                                    /
+                                    priority_escalation["MEDIUM"]["total"]
+                                    * 100
+                                ) | round(1)
+                            }}%
+
+                        {% else %}
+
+                            0%
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+
+                <!-- LOW -->
+
+                <tr>
+
+                    <td style="padding:14px;">
+
+                        <span class="priority-low">
+                            🟢 LOW
+                        </span>
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {{ priority_escalation["LOW"]["total"] }}
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {{ priority_escalation["LOW"]["escalated"] }}
+
+                    </td>
+
+                    <td style="padding:14px;">
+
+                        {% if priority_escalation["LOW"]["total"] > 0 %}
+
+                            {{
+                                (
+                                    priority_escalation["LOW"]["escalated"]
+                                    /
+                                    priority_escalation["LOW"]["total"]
+                                    * 100
+                                ) | round(1)
+                            }}%
+
+                        {% else %}
+
+                            0%
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+<!-- ================================= -->
+<!-- INCIDENT STATUS DISTRIBUTION -->
+<!-- ================================= -->
+
+<div class="card" style="margin-top:30px;">
+
+    <h2>📈 Incident Status Distribution</h2>
+
+    <p style="color:#666;">
+        Current incidents grouped by workflow status.
+    </p>
+
+    <div style="
+        max-width:900px;
+        height:400px;
+        margin-top:20px;
+    ">
+
+        <canvas id="statusChart"></canvas>
+
+    </div>
+
+</div>
+<!-- ============================= -->
+<!-- INCIDENTS -->
+<!-- ============================= -->
+
+<div class="card">
+
+    <h2>
+        🚨 Emergency Incidents
+    </h2>
+
+
+    <!-- ============================= -->
+    <!-- SEARCH & FILTER -->
+    <!-- ============================= -->
+
+    <form
+        method="GET"
+        action="{{ url_for('admin_dashboard') }}"
+        class="filter-container"
+    >
+
+        <input
+            type="text"
+            name="search"
+            value="{{ search }}"
+            placeholder="🔎 Search Incident ID, User, Contact or Phone..."
+            class="filter-input"
+        >
+
+
+        <select
+            name="status"
+            class="filter-select"
+        >
+
+            <option
+                value=""
+                {% if not status %}selected{% endif %}
+            >
+                All Statuses
+            </option>
+
+
+            <option
+                value="ACTIVE"
+                {% if status == "ACTIVE" %}selected{% endif %}
+            >
+                🔴 Active
+            </option>
+
+
+            <option
+                value="ACKNOWLEDGED"
+                {% if status == "ACKNOWLEDGED" %}selected{% endif %}
+            >
+                🟡 Acknowledged
+            </option>
+
+
+            <option
+                value="RESPONDING"
+                {% if status == "RESPONDING" %}selected{% endif %}
+            >
+                🔵 Responding
+            </option>
+
+
+            <option
+                value="RESOLVED"
+                {% if status == "RESOLVED" %}selected{% endif %}
+            >
+                🟢 Resolved
+            </option>
+
+
+            <option
+                value="ESCALATED"
+                {% if status == "ESCALATED" %}selected{% endif %}
+            >
+                🚨 Escalated
+            </option>
+
+        </select>
+
+
+        <button
+            type="submit"
+            class="search-button"
+        >
+            🔎 Search
+        </button>
+
+
+        <a
+            href="{{ url_for('admin_dashboard') }}"
+            class="reset-button"
+        >
+            🔄 Reset
+        </a>
+
+    </form>
+
+
+    <!-- ============================= -->
+    <!-- TABLE -->
+    <!-- ============================= -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Incident
+                    </th>
+
+                    <th>
+                        User
+                    </th>
+
+                    <th>
+                        Emergency Contact
+                    </th>
+
+                    <th>
+                        Location
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Priority
+                    </th>
+
+                    <th>
+                        Escalation
+                    </th>
+
+                    <th>
+                        Time
+                    </th>
+
+                    <th>
+                        Actions
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+            {% for incident in incidents %}
+
+                <tr>
+
+
+                    <!-- ============================= -->
+                    <!-- INCIDENT ID -->
+                    <!-- ============================= -->
+
+                    <td>
+
+                        <strong>
+                            #{{ incident.id }}
+                        </strong>
+
+                    </td>
+
+
+                    <!-- ============================= -->
+                    <!-- USER -->
+                    <!-- ============================= -->
+
+                    <td>
+
+                        {% if incident.user %}
+
+                            👤 {{ incident.user.name }}
+
+                        {% else %}
+
+                            Unknown
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- ============================= -->
+                    <!-- EMERGENCY CONTACT -->
+                    <!-- ============================= -->
+
+                    <td>
+
+                        {% if incident.contact %}
+
+                            📞 {{ incident.contact.name }}
+
+                            <br>
+
+                            📱 {{ incident.contact.phone }}
+
+                        {% else %}
+
+                            Not available
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- ============================= -->
+                    <!-- LOCATION -->
+                    <!-- ============================= -->
+
+                    <td>
+
+                        📍
+                        {{ "%.6f"|format(incident.latitude) }}
+
+                        <br>
+
+                        {{ "%.6f"|format(incident.longitude) }}
+
+                        <br>
+
+                        <a
+                            class="map-link"
+                            target="_blank"
+                            href="https://www.google.com/maps?q={{ incident.latitude }},{{ incident.longitude }}"
+                        >
+
+                            🗺️ View Map
+
+                        </a>
+
+                    </td>
+
+
+                    <!-- ============================= -->
+                    <!-- STATUS -->
+                    <!-- ============================= -->
+
+                    <td>
+
+                        {% if incident.status == "ACTIVE" %}
+
+                            <span class="active">
+                                🔴 ACTIVE
+                            </span>
+
+                        {% elif incident.status == "ACKNOWLEDGED" %}
+
+                            <span class="acknowledged">
+                                🟡 ACKNOWLEDGED
+                            </span>
+
+                        {% elif incident.status == "RESPONDING" %}
+
+                            <span class="responding">
+                                🔵 RESPONDING
+                            </span>
+
+                        {% elif incident.status == "RESOLVED" %}
+
+                            <span class="resolved">
+                                🟢 RESOLVED
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- ============================= -->
+                    <!-- AI PRIORITY -->
+                    <!-- ============================= -->
+
+                    <td>
+
+                        {% if incident.priority == "CRITICAL" %}
+
+                            <span class="priority-critical">
+                                🔴 CRITICAL
+                            </span>
+
+                        {% elif incident.priority == "HIGH" %}
+
+                            <span class="priority-high">
+                                🟠 HIGH
+                            </span>
+
+                        {% elif incident.priority == "MEDIUM" %}
+
+                            <span class="priority-medium">
+                                🟡 MEDIUM
+                            </span>
+
+                        {% elif incident.priority == "LOW" %}
+
+                            <span class="priority-low">
+                                🟢 LOW
+                            </span>
+
+                        {% else %}
+
+                            <span class="priority-medium">
+                                🟡 MEDIUM
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- ============================= -->
+                    <!-- ESCALATION -->
+                    <!-- ============================= -->
+
+                    <td>
+
+                        {% if incident.escalation_status == "ESCALATED" %}
+
+                            {% if incident.escalation_level == 1 %}
+
+                                <span class="level-1">
+                                    🚨 LEVEL 1
+                                </span>
+
+                            {% elif incident.escalation_level == 2 %}
+
+                                <span class="level-2">
+                                    🚨 LEVEL 2
+                                </span>
+
+                            {% elif incident.escalation_level == 3 %}
+
+                                <span class="level-3">
+                                    🚨 LEVEL 3
+                                </span>
+
+                            {% else %}
+
+                                <span class="escalated">
+                                    🚨 ESCALATED
+                                </span>
+
+                            {% endif %}
+
+                            <br>
+
+                            <small>
+                                {{ incident.escalation_reason }}
+                            </small>
+
+                        {% else %}
+
+                            <span class="normal">
+                                🟢 NORMAL
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- ============================= -->
+                    <!-- TIME -->
+                    <!-- ============================= -->
+
+                    <td>
+
+                        {{ incident.created_at }}
+
+                    </td>
+
+
+                    <!-- ============================= -->
+                    <!-- ACTIONS -->
+                    <!-- ============================= -->
+
+                    <td>
+
+
+                        <!-- VIEW DETAILS -->
+
+                        <a
+                            href="{{ url_for(
+                                'incident_details',
+                                incident_id=incident.id
+                            ) }}"
+                            style="
+                                display:inline-block;
+                                padding:8px 12px;
+                                background:#17202a;
+                                color:white;
+                                text-decoration:none;
+                                border-radius:6px;
+                                margin:2px;
+                            "
+                        >
+
+                            👁️ VIEW DETAILS
+
+                        </a>
+
+
+                        <!-- ACTIVE → ACKNOWLEDGED -->
+
+                        {% if incident.status == "ACTIVE" %}
+
+                            <button
+                                class="btn-ack"
+                                onclick="updateStatus(
+                                    {{ incident.id }},
+                                    'ACKNOWLEDGED'
+                                )"
+                            >
+
+                                ACKNOWLEDGE
+
+                            </button>
+
+
+                        <!-- ACKNOWLEDGED → RESPONDING -->
+
+                        {% elif incident.status == "ACKNOWLEDGED" %}
+
+                            <button
+                                class="btn-response"
+                                onclick="updateStatus(
+                                    {{ incident.id }},
+                                    'RESPONDING'
+                                )"
+                            >
+
+                                RESPONDING
+
+                            </button>
+
+
+                        <!-- RESPONDING → RESOLVED -->
+
+                        {% elif incident.status == "RESPONDING" %}
+
+                            <button
+                                class="btn-resolve"
+                                onclick="updateStatus(
+                                    {{ incident.id }},
+                                    'RESOLVED'
+                                )"
+                            >
+
+                                RESOLVE
+
+                            </button>
+
+
+                        <!-- RESOLVED -->
+
+                        {% elif incident.status == "RESOLVED" %}
+
+                            <span style="color:#27ae60;">
+
+                                ✅ COMPLETED
+
+                            </span>
+
+                        {% endif %}
+
+
+                    </td>
+
+
+                </tr>
+
+
+            {% endfor %}
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</div>
+
+
+<!-- ============================= -->
+<!-- PAGINATION -->
+<!-- ============================= -->
+
+<div class="pagination">
+
+
+    {% if pagination.has_prev %}
+
+        <a
+            href="{{ url_for(
+                'admin_dashboard',
+                page=pagination.prev_num,
+                search=search,
+                status=status
+            ) }}"
+        >
+
+            ← Previous
+
+        </a>
+
+    {% endif %}
+
+
+    {% for page_num in pagination.iter_pages(
+        left_edge=1,
+        left_current=1,
+        right_current=1,
+        right_edge=1
+    ) %}
+
+
+        {% if page_num %}
+
+
+            {% if page_num == pagination.page %}
+
+                <span class="current">
+
+                    {{ page_num }}
+
+                </span>
+
+            {% else %}
+
+                <a
+                    href="{{ url_for(
+                        'admin_dashboard',
+                        page=page_num,
+                        search=search,
+                        status=status
+                    ) }}"
+                >
+
+                    {{ page_num }}
+
+                </a>
+
+            {% endif %}
+
+
+        {% else %}
+
+            <span>
+                ...
+            </span>
+
+        {% endif %}
+
+
+    {% endfor %}
+
+
+    {% if pagination.has_next %}
+
+        <a
+            href="{{ url_for(
+                'admin_dashboard',
+                page=pagination.next_num,
+                search=search,
+                status=status
+            ) }}"
+        >
+
+            Next →
+
+        </a>
+
+    {% endif %}
+
+
+</div>
+
+
+<!-- ============================= -->
+<!-- PAGINATION INFORMATION -->
+<!-- ============================= -->
+
+<p style="
+    text-align:center;
+    color:#666;
+">
+
+    {% if pagination.total > 0 %}
+
+        Showing
+        {{ pagination.first }}
+        –
+        {{ pagination.last }}
+
+        of
+
+        {{ pagination.total }}
+
+        matching incidents
+
+    {% else %}
+
+        No incidents found
+
+    {% endif %}
+
+</p>
+
+
+<!-- ============================= -->
+<!-- STATUS UPDATE JAVASCRIPT -->
+<!-- ============================= -->
+
+<script>
+
+async function updateStatus(incidentId, status) {
+
+    const confirmed = confirm(
+        `Change incident status to ${status}?`
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+
+        const csrfToken =
+            document.querySelector(
+                'meta[name="csrf-token"]'
+            ).getAttribute("content");
+
+        const response = await fetch(
+            `/api/incident/${incidentId}/status`,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken
+                },
+
+                body: JSON.stringify({
+                    status: status
+                })
+            }
+        );
+
+        const result = await response.json();
+
+        if (result.success) {
+
+            alert(
+                `Status updated successfully.`
+            );
+
+            location.reload();
+
+        } else {
+
+            alert(
+                `Status update failed:\n\n${result.message}`
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Unable to update incident status."
+        );
+
+    }
+
+}
+
+
+/* ============================= */
+/* SOCKET.IO LIVE ALERT */
+/* ============================= */
+
+const socket = io();
+
+
+/* ============================= */
+/* NEW EMERGENCY */
+/* ============================= */
+
+socket.on("new_emergency", function(data) {
+
+    console.log(
+        "🚨 NEW EMERGENCY:",
+        data
+    );
+
+    const alertBox =
+        document.getElementById("liveAlert");
+
+    const alertMessage =
+        document.getElementById("alertMessage");
+
+    const alertIncidentLink =
+        document.getElementById("alertIncidentLink");
+
+    if (!alertBox || !alertMessage) {
+        return;
+    }
+
+    alertMessage.innerHTML = `
+
+        <strong>
+            🚨 Incident #${data.id}
+        </strong>
+
+        <br><br>
+
+        👤 <strong>User:</strong>
+        ${data.user_name || "Unknown"}
+
+        <br>
+
+        📞 <strong>Emergency Contact:</strong>
+        ${data.contact_name || "Not available"}
+
+        <br>
+
+        📱 <strong>Contact Phone:</strong>
+        ${data.contact_phone || "Not available"}
+
+        <br>
+
+        📍 <strong>Location:</strong>
+        ${data.latitude}, ${data.longitude}
+
+        <br>
+
+        🤖 <strong>AI Priority:</strong>
+        ${data.priority || "MEDIUM"}
+
+        <br>
+
+        🔴 <strong>Status:</strong>
+        ${data.status || "ACTIVE"}
+
+        <br>
+
+        🚨 <strong>Escalation Level:</strong>
+        LEVEL ${data.escalation_level ?? 0}
+
+        <br>
+
+        ⚠️ <strong>Escalation Status:</strong>
+        ${data.escalation_status || "NORMAL"}
+
+        <br>
+
+        📝 <strong>Escalation Reason:</strong>
+        ${data.escalation_reason || "No escalation required."}
+
+        <br>
+
+        🕒 <strong>Time:</strong>
+        ${data.created_at || "Just now"}
+
+    `;
+
+    if (alertIncidentLink) {
+
+        alertIncidentLink.href =
+            `/admin/incident/${data.id}`;
+
+    }
+
+    alertBox.style.display = "block";
+
+});
+
+
+/* ============================= */
+/* INCIDENT ESCALATED */
+/* ============================= */
+
+socket.on("incident_escalated", function(data) {
+
+    console.log(
+        "🚨 INCIDENT ESCALATED:",
+        data
+    );
+
+    const alertBox =
+        document.getElementById("liveAlert");
+
+    const alertMessage =
+        document.getElementById("alertMessage");
+
+    const alertIncidentLink =
+        document.getElementById("alertIncidentLink");
+
+    if (!alertBox) {
+        return;
+    }
+
+    if (alertMessage) {
+
+        alertMessage.innerHTML = `
+
+            <strong>
+                🚨 INCIDENT ESCALATED
+            </strong>
+
+            <br><br>
+
+            Incident #${data.id}
+
+            <br>
+
+            🤖 <strong>Priority:</strong>
+            ${data.priority || "MEDIUM"}
+
+            <br>
+
+            🚨 <strong>Escalation:</strong>
+            LEVEL ${data.escalation_level}
+
+            <br>
+
+            ⚠️ <strong>Status:</strong>
+            ${data.escalation_status || "ESCALATED"}
+
+            <br>
+
+            📝 <strong>Reason:</strong>
+            ${data.escalation_reason || "Authority attention required."}
+
+        `;
+
+    }
+
+    if (alertIncidentLink) {
+
+        alertIncidentLink.href =
+            `/admin/incident/${data.id}`;
+
+    }
+
+    alertBox.style.display = "block";
+
+});
+
+
+/* ============================= */
+/* CLOSE ALERT */
+/* ============================= */
+
+function closeAlert() {
+
+    const alertBox =
+        document.getElementById("liveAlert");
+
+    if (alertBox) {
+
+        alertBox.style.display = "none";
+
+    }
+
+}
+
+</script>
+
+<!-- ============================= -->
+<!-- ESCALATION CHART -->
+<!-- ============================= -->
+
+<script>
+
+const escalationCanvas =
+    document.getElementById("escalationChart");
+
+if (escalationCanvas) {
+
+    new Chart(
+        escalationCanvas,
+        {
+            type: "bar",
+
+            data: {
+
+                labels: [
+                    "Level 1 - Attention",
+                    "Level 2 - Urgent",
+                    "Level 3 - Critical"
+                ],
+
+                datasets: [
+
+                    {
+                        label: "Incidents",
+
+                        data: [
+                            {{ level1_count }},
+                            {{ level2_count }},
+                            {{ level3_count }}
+                        ]
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+                        display: false
+                    },
+
+                    title: {
+                        display: false
+                    }
+
+                },
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        ticks: {
+                            precision: 0
+                        },
+
+                        title: {
+                            display: true,
+                            text: "Number of Incidents"
+                        }
+
+                    },
+
+                    x: {
+
+                        title: {
+                            display: true,
+                            text: "Escalation Level"
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+}
+
+</script>
+<script>
+
+const priorityChartElement =
+    document.getElementById("priorityChart");
+
+new Chart(priorityChartElement, {
+
+    type: "bar",
+
+    data: {
+
+        labels: [
+            "CRITICAL",
+            "HIGH",
+            "MEDIUM",
+            "LOW"
+        ],
+
+        datasets: [{
+
+            label: "Number of Incidents",
+
+            data: [
+                {{ critical_count }},
+                {{ high_count }},
+                {{ medium_count }},
+                {{ low_count }}
+            ],
+
+            borderWidth: 1
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        scales: {
+
+            y: {
+
+                beginAtZero: true,
+
+                ticks: {
+
+                    stepSize: 1
+
+                },
+
+                title: {
+
+                    display: true,
+
+                    text: "Number of Incidents"
+
+                }
+
+            },
+
+            x: {
+
+                title: {
+
+                    display: true,
+
+                    text: "AI Predicted Priority"
+
+                }
+
+            }
+
+        }
+
+    }
+
+});
+
+</script>
+<script>
+
+const statusChartElement =
+    document.getElementById("statusChart");
+
+if (statusChartElement) {
+
+    new Chart(statusChartElement, {
+
+        type: "bar",
+
+        data: {
+
+            labels: [
+                "ACTIVE",
+                "ACKNOWLEDGED",
+                "RESPONDING",
+                "RESOLVED"
+            ],
+
+            datasets: [{
+
+                label: "Number of Incidents",
+
+                data: [
+                    {{ status_distribution["ACTIVE"] }},
+                    {{ status_distribution["ACKNOWLEDGED"] }},
+                    {{ status_distribution["RESPONDING"] }},
+                    {{ status_distribution["RESOLVED"] }}
+                ],
+
+                borderWidth: 1
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+                    display: false
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    ticks: {
+                        stepSize: 1
+                    },
+
+                    title: {
+                        display: true,
+                        text: "Number of Incidents"
+                    }
+
+                },
+
+                x: {
+
+                    title: {
+                        display: true,
+                        text: "Incident Status"
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+</script>
+</body>
+
+</html>

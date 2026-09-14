@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeShield</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🛡️ SafeShield</h1>
+
+        <h2>Women Safety & Emergency Assistance System</h2>
+
+        <p class="status">🟢 System Online</p>
+
+        <button id="sosButton">🚨 SOS EMERGENCY</button>
+
+        <p id="message"></p>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>

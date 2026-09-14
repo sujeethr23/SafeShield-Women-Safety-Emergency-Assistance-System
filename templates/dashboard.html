@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SafeShield - Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🛡️ SafeShield</h1>
+
+    <h2>Welcome, {{ user_name }} 👋</h2>
+
+    <p>
+        Your SafeShield account is active.
+    </p>
+
+    <hr>
+
+    <h3>Safety Services</h3>
+
+    <p>🚨 Emergency SOS</p>
+
+    <p>📍 Location Assistance</p>
+
+   <p>
+    📞
+    <a href="/emergency-contacts">
+        Emergency Contacts
+    </a>
+    <a href="/notifications" class="dashboard-btn" id="notificationsButton">
+        🔔 Notifications
+        {% if unread_notifications > 0 %}
+            (<span id="unreadCount">{{ unread_notifications }}</span>)
+        {% endif %}
+    </a>
+   </p>
+
+    <p>⚠️ Incident Reporting</p>
+
+    <br>
+
+    <a href="/">
+        <button>
+            Go to SOS
+        </button>
+    </a>
+
+    <br><br>
+
+    <a href="/logout">
+        Logout
+    </a>
+
+</div>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
+<script>
+    const socket = io();
+
+    socket.on("my_incident_status_updated", function(data) {
+
+        let countElement = document.getElementById("unreadCount");
+
+        if (!countElement) {
+
+            const button =
+                document.getElementById("notificationsButton");
+
+            const span = document.createElement("span");
+            span.id = "unreadCount";
+            span.textContent = "1";
+
+            button.appendChild(
+                document.createTextNode(" (")
+            );
+
+            button.appendChild(span);
+
+            button.appendChild(
+                document.createTextNode(")")
+            );
+
+            return;
+        }
+
+        let count = parseInt(
+            countElement.textContent || "0"
+        );
+
+        count += 1;
+
+        countElement.textContent = count;
+    });
+</script>
+</body>
+
+</html>
