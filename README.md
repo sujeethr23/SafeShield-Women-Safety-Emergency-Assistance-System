@@ -1,5 +1,3 @@
-
-
 🛡️ SafeShield — Women Safety \& Emergency Assistance System
 
 SafeShield is a software-based emergency assistance and incident-management platform designed to help users report safety incidents and allow an authorized response team to monitor, prioritize, track, and close those incidents through a structured workflow.
@@ -812,7 +810,7 @@ python -m venv venv
 
 3\. Activate the virtual environment
 
-venv\\Scripts ctivate
+venv\\Scripts\\ctivate
 
 4\. Install dependencies
 
@@ -831,26 +829,6 @@ http://127.0.0.1:5000
 🔐 Development Credentials
 
 For local testing, the project may contain development/test accounts.
-
-
-
-Test User
-
-Email: test@safeshield.local
-
-Password: Test@12345
-
-Role: USER
-
-Development Authority
-
-Email: authority@safeshield.local
-
-Password: Authority@12345
-
-Role: AUTHORITY
-
-Do not use these credentials in production. Replace all development credentials and secrets before deployment.
 
 
 
