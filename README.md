@@ -833,27 +833,6 @@ http://127.0.0.1:5000
 For local testing, the project may contain development/test accounts.
 
 
-
-Test User
-
-Email: test@safeshield.local
-
-Password: Test@12345
-
-Role: USER
-
-Development Authority
-
-Email: authority@safeshield.local
-
-Password: Authority@12345
-
-Role: AUTHORITY
-
-Do not use these credentials in production. Replace all development credentials and secrets before deployment.
-
-
-
 🧪 Recommended Demo Flow
 
 Use only safe local test data during demonstrations.
