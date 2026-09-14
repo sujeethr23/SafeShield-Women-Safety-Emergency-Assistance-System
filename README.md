@@ -831,7 +831,10 @@ http://127.0.0.1:5000
 For local testing, the project may contain development/test accounts.
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> acc238182120735e1bae1627c222c246a0417a66
 🧪 Recommended Demo Flow
 
 Use only safe local test data during demonstrations.
